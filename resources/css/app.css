@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,6 +6,84 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    /* --- Konfigurasi Font (Tetap Sama) --- */
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* --- Konfigurasi Warna Tema (Maroon & Expensive Look) --- */
+
+    /* 1. Warna Utama (Primary): Maroon Meredup yang Mewah */
+    --color-primary-50: #fdf2f2;
+    --color-primary-100: #fbe8e8;
+    --color-primary-200: #f7d4d4;
+    --color-primary-300: #efb6b6;
+    --color-primary-400: #e18e8e;
+    --color-primary-500: #701c1c;
+    /* Rich Maroon (Warna Utama Tombol/Aksen) */
+    --color-primary-600: #601818;
+    /* Maroon Lebih Gelap (Hover) */
+    --color-primary-700: #501414;
+    --color-primary-800: #401010;
+    --color-primary-900: #300c0c;
+    --color-primary-950: #200808;
+
+    /* 2. Warna Netral (Background): Off-White Mewah ala Kertas Premium */
+    --color-neutral-50: #fafaf9;
+    /* Warm Off-White (Warna Background Utama) */
+    --color-neutral-100: #f5f5f4;
+    --color-neutral-200: #e7e7e4;
+    /* Garis tipis/Border */
+    --color-neutral-300: #d6d6d2;
+    --color-neutral-400: #a3a3a0;
+    --color-neutral-500: #737370;
+    /* Teks Sekunder */
+    --color-neutral-600: #525250;
+    --color-neutral-700: #40403e;
+    --color-neutral-800: #262624;
+    /* Teks Utama (Bukan Hitam Pekat) */
+    --color-neutral-900: #171715;
+    --color-neutral-950: #0a0a09;
+
+    /* 3. Warna Aksen Tambahan: Emas Meredup (Champagne) */
+    --color-accent-50: #fbf9f1;
+    --color-accent-100: #f7f1e2;
+    --color-accent-200: #eee0c2;
+    --color-accent-300: #e2cba1;
+    --color-accent-400: #d4af37;
+    /* Muted Gold/Champagne */
+    --color-accent-500: #b8982e;
+    --color-accent-600: #9e8228;
+    --color-accent-700: #856d22;
+    --color-accent-800: #6c591c;
+    --color-accent-900: #544516;
+    --color-accent-950: #3c3110;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.animate-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.animate-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0) 100%);
+    animation: shimmer 3s infinite;
 }

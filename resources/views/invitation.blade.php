@@ -1,34 +1,43 @@
 <!DOCTYPE html> 
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Fabian & Naifa | Wedding Celebration</title>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --ivory: #f9f6f2;
-            --champagne: #f7e7ce;
-            --rose-gold: #b76e79;
-            --dark-rose: #9e5a64;
-            --charcoal: #333333;
-            --light-gray: #e8e8e8;
-            --white: #ffffff;
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            --radius: 12px;
-            --transition: all 0.4s ease;
+            /* Palette Coastal Blue, Cream & Sand Gradient */
+            --bg-cream: #F7F3EB;
+            --bg-sand: #EAE1D0;
+            --bg-seafoam: #C0D6D8;
+            --blue-ocean: #3E5F7B;
+            --blue-dark: #22374A;
+            --text-blue: #2E455A;
+            --text-muted: #586F83;
+            --gold-accent: #C39D53;
+
+            --font-cursive: 'Great Vibes', cursive;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+
+            --radius-pill: 50px;
+            --shadow-soft: 0 12px 35px rgba(34, 55, 74, 0.12);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
         }
 
         html {
@@ -36,101 +45,233 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--charcoal);
-            background-color: var(--ivory);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    font-family: var(--font-sans);
+    color: var(--text-blue);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* Latar Belakang Gradasi Soft Cream - Seafoam khas Pernikahan */
+    background: linear-gradient(135deg, #fdfbf7 0%, #e8f0ed 50%, #f7f3ec 100%);
+    background-attachment: fixed;
+    line-height: 1.7;
+    overflow-x: hidden;
+    position: relative;
+}
 
-        h1, h2, h3, h4, h5 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 500;
-            line-height: 1.2;
-        }
+/* Container untuk animasi elemen bergerak */
+.bg-animation-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Supaya tombol & kartu tetap bisa diklik */
+    z-index: 0;
+    overflow: hidden;
+}
 
-        h1 {
-            font-size: 4rem;
-            letter-spacing: -0.5px;
-        }
+/* Style umum untuk elemen kelopak mawar / daun */
+.petal {
+    position: absolute;
+    top: -10%;
+    background: radial-gradient(circle, rgba(255, 240, 243, 0.8) 0%, rgba(240, 215, 220, 0.6) 100%);
+    border-radius: 150% 0 150% 0;
+    filter: blur(0.5px) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.05));
+    animation: floatDown linear infinite;
+}
 
-        h2 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            position: relative;
-        }
+/* Animasi Gerakan Jatuh & Meliuk Halus */
+@keyframes floatDown {
+    0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg) translateX(80px);
+        opacity: 0;
+    }
+}
 
-        h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
+/* Variasi Ukuran, Posisi, dan Kecepatan Elemen Bergerak */
+.petal:nth-child(1) { left: 10%; width: 18px; height: 24px; animation-duration: 12s; animation-delay: 0s; }
+.petal:nth-child(2) { left: 25%; width: 14px; height: 18px; animation-duration: 16s; animation-delay: 2s; background: rgba(220, 235, 228, 0.7); } /* Sentuhan daun hijau */
+.petal:nth-child(3) { left: 40%; width: 22px; height: 28px; animation-duration: 14s; animation-delay: 4s; }
+.petal:nth-child(4) { left: 65%; width: 16px; height: 20px; animation-duration: 18s; animation-delay: 1s; }
+.petal:nth-child(5) { left: 80%; width: 20px; height: 26px; animation-duration: 11s; animation-delay: 3s; background: rgba(220, 235, 228, 0.7); }
+.petal:nth-child(6) { left: 92%; width: 15px; height: 22px; animation-duration: 15s; animation-delay: 5s; }
 
-        p {
-            color: #555;
-            margin-bottom: 1.5rem;
+        /* Slawir Transparan di Background Samping */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: -10%;
+            width: 120%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 480px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.2rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* ELEMEN BUNGAN MAWAR PUTIH BERKUMPULAN (BUNCH) */
+        /* Container Bunga Atas & Bawah */
+/* Atur container bunga agar fleksibel dan tidak membatasi ukuran gambar */
+.white-rose-top,
+.white-rose-bottom {
+    width: 100%;
+    height: auto; /* Biarkan tinggi menyesuaikan proporsi gambar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    overflow: visible;
+}
+
+/* 2. MAWAR ATAS (Melebar Penuh Ke Sudut Kartu) */
+.white-rose-top {
+    width: calc(100% + 3rem); /* Menarik bunga keluar melebihi padding kanan-kiri card */
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.white-rose-top img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+/* 3. MAWAR BAWAH */
+.white-rose-bottom {
+    width: calc(100% + 3rem);
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    margin-bottom: -1.5rem; /* Menempel ke pinggir paling bawah card */
+    margin-top: 1.5rem;
+}
+
+.white-rose-bottom img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Bikin gambar mawar tampil PENUH melebar memenuhi kartu */
+.white-rose-top img,
+.white-rose-bottom img {
+    width: 100%; /* Memenuhi lebar kartu */
+    height: auto; /* Menjaga agar rasio bunga tidak gepeng */
+    display: block;
+    object-fit: cover;
+}
+
+/* Atur container mawar tengah agar fleksibel */
+.white-rose-garland {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0; /* Memberi jarak atas & bawah yang pas dari teks dan foto */
+}
+
+/* Memperbesar gambar mawar tengah */
+.white-rose-garland img,
+.rose-garland-img {
+    width: 90% !important; /* Melebarkan gambar hingga 90% lebar kartu */
+    max-width: 450px;       /* Mencegah gambar terlalu raksasa di layar PC */
+    height: auto !important; /* Menjaga rasio bunga agar tidak gepeng */
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.06)); /* Efek bayangan lembut */
+}
+
+        /* Pita Aesthetic Frame */
+        .ribbon-banner {
+            display: inline-block;
+            position: relative;
+            padding: 4px 20px;
+            margin: 10px 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(195, 157, 83, 0.25) 50%, transparent 100%);
+            color: var(--blue-dark);
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: var(--font-cursive);
+            color: var(--blue-dark);
+            font-weight: 400;
+        }
+
+        h1 {
+            font-size: 4.2rem;
+            margin-bottom: 0.2rem;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        h2 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-family: var(--font-serif);
+        }
+
+        .serif-title {
+            font-family: var(--font-serif);
+            letter-spacing: 3px;
+            color: var(--blue-ocean);
+            text-transform: uppercase;
+            font-size: 0.8rem;
         }
 
         section {
-            padding: 6rem 0;
+            padding: 3.5rem 0;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background-color: var(--rose-gold);
-            color: var(--white);
-            border: none;
-            border-radius: 50px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            letter-spacing: 0.5px;
-        }
-
-        .btn:hover {
-            background-color: var(--dark-rose);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(183, 110, 121, 0.2);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--rose-gold);
-            color: var(--rose-gold);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--rose-gold);
-            color: var(--white);
-        }
-
-        .card {
-            background-color: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 2.5rem;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .text-center {
-            text-align: center;
-        }
+        /* Glass Cards */
+        /* 1. KARTU UTAMA & BACKGROUND TEXTURE */
+.card {
+    position: relative;
+    padding: 0 1.5rem 1.5rem 1.5rem; /* Padding atas dibuat 0 agar bunga menempel sempurna */
+    border-radius: 20px;
+    overflow: hidden; /* Memotong bunga agar melengkung rapi mengikuti sudut card */
+    
+    /* Background Motif Floral Transparan Mewah */
+    background-color: #fdfbf7;
+    background-image: radial-gradient(#d4c5b9 0.75px, transparent 0.75px), radial-gradient(#d4c5b9 0.75px, #fdfbf7 0.75px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+}
 
         .fade-in {
             opacity: 0;
@@ -143,271 +284,118 @@
             transform: translateY(0);
         }
 
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.5rem 0;
-            transition: var(--transition);
-        }
-
-        header.scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            padding: 1rem 0;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--rose-gold);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 2.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--charcoal);
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--rose-gold);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--rose-gold);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 1001;
-            color: var(--charcoal);
-            transition: var(--transition);
-        }
-        
-        header.scrolled .mobile-menu {
-            color: var(--charcoal);
-        }
-        
-        .nav-links.open {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.98); 
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem 0;
-            text-align: center;
-            border-top: 1px solid var(--light-gray);
-        }
-
-        .nav-links.open li {
-            margin: 0.5rem 0;
-        }
-
-        /* Hero */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
+        /* Arch Photo */
+        .arch-photo-container {
+            width: 200px;
+            height: 280px;
+            margin: 1rem auto;
+            border-radius: 100px;
+            border: 4px solid #FFFFFF;
             overflow: hidden;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            box-shadow: 0 8px 25px rgba(34, 55, 74, 0.18);
+            position: relative;
         }
 
-        .hero-content {
-            max-width: 800px;
-            z-index: 1;
-            color: var(--white);
+        .arch-photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .hero h1 {
-            margin-bottom: 1.5rem;
-            font-weight: 300;
+        /* Amplop Estetik / Envelope Container */
+        .envelope-card {
+            background: linear-gradient(135deg, #F5EFE6 0%, #E2ECED 100%);
+            border: 2px dashed rgba(62, 95, 123, 0.3);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1.2rem 0;
+            position: relative;
         }
 
-        .hero h1 span {
-            font-weight: 600;
-            color: var(--champagne);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .guest-name {
-            font-size: 1.5rem;
-            color: var(--champagne);
-            margin-top: 1rem;
-            font-style: italic;
-        }
-
-        /* About */
-        .about {
-            background-color: var(--white);
-        }
-
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            height: 500px;
-            background: linear-gradient(135deg, var(--champagne) 0%, var(--rose-gold) 100%);
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.2rem;
-            font-style: italic;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-        }
-        
-        .about-image img {
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
+        .envelope-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--blue-ocean);
+            color: #fff;
+            padding: 2px 14px;
             border-radius: 12px;
+            font-size: 0.75rem;
+            font-family: var(--font-serif);
         }
 
-        /* Details */
-        .details {
-            background-color: var(--ivory);
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background-color: var(--blue-ocean);
+            color: #FFFFFF !important;
+            border: none;
+            border-radius: var(--radius-pill);
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(62, 95, 123, 0.25);
         }
 
-        .details-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .btn:hover {
+            background-color: var(--blue-dark);
+            transform: translateY(-2deg);
         }
 
-        .detail-card {
-            text-align: center;
-            padding: 3rem 2rem;
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--blue-ocean);
+            color: var(--blue-ocean) !important;
         }
 
-        .detail-icon {
-            font-size: 2.5rem;
-            color: var(--rose-gold);
-            margin-bottom: 1.5rem;
+        .btn-outline:hover {
+            background-color: var(--blue-ocean);
+            color: #FFFFFF !important;
         }
 
-        .detail-card h3 {
-            color: var(--rose-gold);
-        }
-
-        /* RSVP */
-        .rsvp {
-            background: linear-gradient(135deg, rgba(249, 246, 242, 0.9) 0%, rgba(247, 231, 206, 0.7) 100%);
-        }
-
-        .rsvp-form {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
+        /* Form Inputs */
         .form-group {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
+            text-align: left;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            font-family: var(--font-serif);
+            color: var(--blue-dark);
+            margin-bottom: 0.4rem;
         }
 
         .form-control {
             width: 100%;
-            padding: 14px 16px;
-            border: 1px solid var(--light-gray);
-            border-radius: var(--radius);
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
+            padding: 12px 16px;
+            border: 1px solid rgba(88, 111, 131, 0.3);
+            border-radius: 16px;
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            background-color: rgba(255, 255, 255, 0.85);
+            color: var(--text-blue);
             transition: var(--transition);
-            background-color: rgba(255, 255, 255, 0.7);
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--rose-gold);
-            box-shadow: 0 0 0 3px rgba(183, 110, 121, 0.1);
+            border-color: var(--blue-ocean);
+            background-color: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(62, 95, 123, 0.12);
         }
 
         textarea.form-control {
-            min-height: 120px;
+            min-height: 100px;
             resize: vertical;
         }
 
@@ -422,265 +410,269 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-        }
-
-        .radio-option input[type="radio"] {
-            cursor: pointer;
+            accent-color: var(--blue-ocean);
         }
 
         .radio-option label {
             cursor: pointer;
             margin-bottom: 0;
+            color: var(--text-blue);
         }
 
-        /* QR */
-        .qr-section {
-            background-color: var(--white);
-        }
-
-        .qr-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3rem;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .qr-code {
-            flex: 0 0 250px;
-            height: 250px;
-            background: var(--white);
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(183, 110, 121, 0.2);
-            padding: 1rem;
-        }
-
-        .qr-code img {
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 100%;
-        }
-
-        .qr-code svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .qr-actions {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .qr-actions .btn {
-            margin-right: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Wishes */
-        .wishes {
-            background-color: var(--ivory);
-        }
-
-        .wishes-form {
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
-
-        .wishes-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .wish-item {
-            margin-bottom: 1.5rem;
-            padding: 1.5rem;
-            background-color: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 1rem 0;
             transition: var(--transition);
         }
 
-        .wish-item:hover {
-            transform: translateY(-5px);
+        header.scrolled {
+            background-color: rgba(247, 243, 241, 0.92);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 1.2rem;
+        }
+
+        .logo {
+            font-family: var(--font-cursive);
+            font-size: 1.8rem;
+            color: var(--blue-dark);
+        }
+
+        .mobile-menu {
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--blue-dark);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 4rem;
+        }
+
+        .guest-name {
+            font-family: var(--font-cursive);
+            font-size: 2.3rem !important;
+            color: var(--blue-dark) !important;
+            margin-top: 0.3rem;
+        }
+
+        /* Countdown Grid */
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 1rem;
+        }
+
+        .count-box {
+            background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(220, 233, 235, 0.6) 100%);
+            border: 1px solid rgba(88, 111, 131, 0.2);
+            padding: 10px 4px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .count-box .num {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--blue-dark);
+        }
+
+        .count-box .label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* QR Code Frame */
+        .qr-container {
+            background: linear-gradient(165deg, rgba(247, 243, 235, 0.95) 0%, rgba(200, 217, 219, 0.9) 100%);
+            border-radius: 28px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-soft);
+            border: 1.5px solid rgba(255, 255, 255, 0.85);
+            text-align: center;
+            position: relative;
+        }
+
+        .qr-code {
+            width: 180px;
+            height: 180px;
+            margin: 1rem auto;
+            background: #FFFFFF;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border: 1px solid rgba(88, 111, 131, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .qr-code img, .qr-code svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Wishes List */
+        .wishes-list {
+            margin-top: 1.5rem;
+            max-height: 280px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .wish-item {
+            margin-bottom: 0.8rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.75);
+            border-radius: 16px;
+            border: 1px solid rgba(88, 111, 131, 0.15);
         }
 
         .wish-author {
+            font-family: var(--font-serif);
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--rose-gold);
+            color: var(--blue-dark);
+            margin-bottom: 0.2rem;
         }
 
         .wish-message {
-            color: #555;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: var(--font-serif);
         }
 
         /* Footer */
         footer {
-            background-color: var(--charcoal);
-            color: var(--white);
-            padding: 4rem 0 2rem;
+            background-color: var(--blue-dark);
+            color: #FFFFFF;
+            padding: 3.5rem 0 6rem;
+            text-align: center;
+            border-radius: 35px 35px 0 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 3rem;
-            margin-bottom: 3rem;
+        footer h3 {
+            color: #FFFFFF;
         }
 
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .footer-column h3 {
-            color: var(--champagne);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .footer-column p {
-            color: #ccc;
+        footer p, .copyright p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
         }
 
         .footer-links {
             list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
         }
 
         .footer-links a {
-            color: #ccc;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            transition: var(--transition);
+            font-size: 0.85rem;
+            font-family: var(--font-serif);
         }
 
-        .footer-links a:hover {
-            color: var(--rose-gold);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background-color: var(--rose-gold);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #999;
-        }
-
-        .alert {
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: var(--radius);
-            display: none;
-        }
-
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .alert-error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        /* Music Control */
+        /* Audio Control Button */
         .audio-control-btn {
             position: fixed;
-            bottom: 20px; 
+            bottom: 80px; 
             right: 20px; 
             z-index: 1050; 
-            background-color: var(--rose-gold); 
-            color: var(--white);
+            background-color: var(--blue-ocean); 
+            color: #FFFFFF;
             border: none;
             border-radius: 50%; 
-            width: 50px; 
-            height: 50px; 
+            width: 45px; 
+            height: 45px; 
             cursor: pointer;
-            box-shadow: var(--shadow); 
-            font-size: 18px;
-            transition: var(--transition);
+            box-shadow: 0 6px 15px rgba(34, 55, 74, 0.3); 
+            font-size: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .audio-control-btn:hover {
-            background-color: var(--dark-rose);
-            transform: scale(1.1); 
+        /* Bottom Floating Nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 30px);
+            max-width: 420px;
+            background: rgba(34, 55, 74, 0.88);
+            backdrop-filter: blur(12px);
+            border-radius: 30px;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 999;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Wedding Notification */
+        .bottom-nav a {
+            color: #FFFFFF;
+            font-size: 1.05rem;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .bottom-nav a:hover {
+            opacity: 1;
+            color: var(--bg-seafoam);
+        }
+
+        /* Pop-up Gradasi Estetik */
         .wedding-notification {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0);
-            background: linear-gradient(135deg, var(--rose-gold) 0%, var(--dark-rose) 100%);
-            color: var(--white);
-            padding: 3rem;
-            border-radius: var(--radius);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, #F7F3EB 0%, #D2E4E6 100%);
+            color: var(--text-blue);
+            padding: 1.5rem;
+            border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
             z-index: 2000;
             text-align: center;
-            max-width: 500px;
+            max-width: 380px;
             width: 90%;
-            transition: transform 0.5s ease;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            overflow: hidden;
         }
 
         .wedding-notification.show {
             transform: translate(-50%, -50%) scale(1);
-        }
-
-        .wedding-notification h2 {
-            color: var(--white);
-            margin-bottom: 1rem;
-            font-size: 2.5rem;
-        }
-
-        .wedding-notification p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .wedding-notification .btn {
-            background-color: var(--white);
-            color: var(--rose-gold);
-        }
-
-        .wedding-notification .btn:hover {
-            background-color: var(--champagne);
-            color: var(--dark-rose);
         }
 
         .notification-overlay {
@@ -689,11 +681,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(34, 55, 74, 0.55);
+            backdrop-filter: blur(5px);
             z-index: 1999;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            transition: opacity 0.3s ease;
         }
 
         .notification-overlay.show {
@@ -701,106 +694,49 @@
             visibility: visible;
         }
 
-        /* Animations */
-        @keyframes floatUp {
-            0% { transform: translateY(10px) scale(0.9); opacity: 0; }
-            100% { transform: translateY(0) scale(1); opacity: 1; }
+        .alert {
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            display: none;
+            font-size: 0.8rem;
+            font-family: var(--font-serif);
         }
 
-        @keyframes gentleWiggle {
-            0%,100% { transform: translateX(0) rotate(0deg); }
-            25% { transform: translateX(-1.5px) rotate(-0.5deg); }
-            50% { transform: translateX(1.5px) rotate(0.5deg); }
-            75% { transform: translateX(-1px) rotate(-0.3deg); }
+        .alert-success {
+            background-color: #E2EFCB;
+            color: #2D5A27;
         }
 
-        @keyframes glowPulse {
-            0%,100% { box-shadow: 0 4px 15px rgba(183,110,121,0.5), 0 0 8px rgba(255,255,255,0.4); }
-            50% { box-shadow: 0 6px 20px rgba(183,110,121,0.7), 0 0 12px rgba(255,255,255,0.6); }
+        .alert-error {
+            background-color: #FCE8E6;
+            color: #C5221F;
         }
 
-        @keyframes shimmer {
-            0% { box-shadow: 0 0 6px rgba(255,255,255,0.4); }
-            50% { box-shadow: 0 0 14px rgba(255,255,255,0.8); }
-            100% { box-shadow: 0 0 6px rgba(255,255,255,0.4); }
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 3rem;
-            }
-            h2 {
-                font-size: 2.5rem;
-            }
-            .nav-links li {
-                margin-left: 1.5rem; 
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .mobile-menu {
-                display: block;
-            }
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-            .hero-btns .btn {
-                width: 100%;
-                max-width: 250px;
-            }
-            section {
-                padding: 4rem 0;
-            }
-            .qr-container {
-                flex-direction: column;
-            }
-            .qr-actions {
-                text-align: center;
-                min-width: unset;
-            }
-            .qr-code {
-                flex: 0 0 200px;
-                height: 200px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            h2 {
-                font-size: 2rem;
-            }
-            .container {
-                padding: 0 1.5rem;
-            }
-            .about-content {
-                gap: 2rem;
-            }
-            .card {
-                padding: 2rem 1.5rem;
-            }
+        .ornament-divider {
+            color: var(--blue-ocean);
+            font-size: 1rem;
+            letter-spacing: 6px;
+            margin: 0.5rem 0;
+            opacity: 0.75;
         }
     </style>
 </head>
-
 <body>
+
+    <!-- ELEMEN BACKGROUND BERGERAK (Floating Petals) -->
+    <div class="bg-animation-container">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
     <header id="header">
-        <div class="container nav-container">
-            <div class="logo">F&N</div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">Our Story</a></li>
-                <li><a href="#details">Details</a></li>
-                <li><a href="#rsvp">RSVP</a></li>
-                <li><a href="#qr">QR Code</a></li>
-                <li><a href="#wishes">Messages</a></li>
-            </ul>
+        <div class="nav-container">
+            <div class="logo">Fabian & Naifa</div>
             <div class="mobile-menu" id="mobileMenu">
                 <i class="fas fa-bars"></i>
             </div>
@@ -810,12 +746,45 @@
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content fade-in">
-                <h1>We're Getting <span>Married</span></h1>
-                <p class="guest-name">Dear {{ $guest->name }}</p>
-                <p>Fabian Rozan Fanani & Naifa Ashila Handoyo invite you to celebrate their special day. Join us for an unforgettable celebration of love, laughter, and new beginnings.</p>
-                <div class="hero-btns">
-                    <a href="#about" class="btn">Open Invitation</a>
-                    <a href="#rsvp" class="btn btn-outline">Send RSVP</a>
+                <div class="card">
+                    <!-- Buket Mawar Putih Lebat Atas -->
+                    <div class="white-rose-top">
+    <img src="{{ asset('images/mawar-putih-atas.png') }}" class="rose-img" alt="White Rose Decoration">
+</div>
+                    
+                    <div class="ribbon-banner">🎀 The Wedding Of 🎀</div>
+                    
+                    <h1>Fabian & Naifa</h1>
+                    
+                    <div class="ornament-divider">❀ ── ❁ ── ❀</div>
+                    
+                    <div class="envelope-card">
+                        <div class="envelope-badge"><i class="fas fa-envelope-open-text"></i> Special Invitation</div>
+                        <p style="margin-bottom: 0.2rem; font-size: 0.8rem;">To Our Honored Guest:</p>
+                        <p class="guest-name">{{ $guest->name }}</p>
+                    </div>
+
+                    <p style="font-style: italic;">We request the pleasure of your company to celebrate our marriage.</p>
+                    
+                    <!-- Rangkaian Bunga Mawar Tengah -->
+                    <div class="white-rose-garland">
+    <img src="{{ asset('images/mawar-putih-tengah.png') }}" class="rose-garland-img" alt="Rose Garland">
+</div>
+
+                    <div class="arch-photo-container">
+                        <img src="{{ asset('images/FN.png') }}" alt="Fabian & Naifa">
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem;">
+                        <a href="#about" class="btn"><i class="fa-regular fa-envelope-open"></i> Open Invitation</a>
+                        <a href="#rsvp" class="btn btn-outline">Send RSVP</a>
+                    </div>
+                    
+                    <!-- Buket Mawar Putih Lebat Bawah -->
+                    <!-- MAWAR BAWAH (Dipasang di bawah tombol) -->
+    <div class="white-rose-bottom">
+        <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="White Rose Decoration Bottom">
+    </div>
                 </div>
             </div>
         </div>
@@ -823,71 +792,74 @@
 
     <section class="about" id="about">
         <div class="container">
-            <h2 class="text-center fade-in">Our Love Story</h2>
-            <div class="about-content">
-                <div class="about-text fade-in">
-                    <h3>So This Is Love...</h3>
-                    <p>Our journey began with chance encounters and shared laughter, slowly weaving a tapestry of memories that became the fabric of our love story.</p>
-                    <p>As we stand on the brink of forever, we want you to be a part of our next chapter. Join us as we exchange vows and promise each other a lifetime of adventures.</p>
+            <h2 class="fade-in">Our Love Story</h2>
+            <div class="card fade-in">
+                <div class="white-rose-top"></div>
+                
+                <div class="ribbon-banner">🎗️ Endless Love 🎗️</div>
+                <h3>So This Is Love...</h3>
+                <p>Our journey began with chance encounters and shared laughter, slowly weaving a tapestry of memories that became the fabric of our love story.</p>
+                <p>As we stand on the brink of forever, we want you to be a part of our next chapter. Join us as we exchange vows and promise each other a lifetime of adventures.</p>
+                
+                <div class="arch-photo-container" style="width: 180px; height: 240px;">
+                    <img src="{{ asset('images/FN.png') }}" alt="Fabian & Haifa">
                 </div>
-                <div class="about-image fade-in">
-                    <img src="{{ asset('images/FN.png') }}" alt="Fabian & Haifa" class="img-fluid">
-                </div>
+
+                <div class="white-rose-bottom"></div>
             </div>
         </div>
     </section>
 
     <section class="details" id="details">
         <div class="container">
-            <h2 class="text-center fade-in">Wedding Details</h2>
-            <div class="details-cards">
-                <div class="card detail-card fade-in">
-                    <div class="detail-icon">
+            <h2 class="fade-in">Wedding Details</h2>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div class="card fade-in">
+                    <div class="white-rose-top"></div>
+                    <div style="font-size: 1.6rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <h3>Location</h3>
-                    <p>SMK Telkom Purwokerto</p>
-                    <p>Jl. DI Panjaitan No.128, Karangreja, Purwokerto Kidul, South Purwokerto District, Banyumas Regency, Central Java 53141</p>
-                    <a href="https://maps.app.goo.gl/bDu22rrdEUnayUDw5" target="_blank" class="btn" style="margin-top: 1rem;">
+                    <p><strong>SMK Telkom Purwokerto</strong></p>
+                    <p style="font-size: 0.82rem;">Jl. DI Panjaitan No.128, Karangreja, Purwokerto Kidul, South Purwokerto District, Banyumas Regency, Central Java 53141</p>
+                    <a href="https://maps.app.goo.gl/bDu22rrdEUnayUDw5" target="_blank" class="btn" style="margin-top: 0.5rem;">
                         <i class="fas fa-map-marked-alt"></i> Open in Google Maps
                     </a>
+                    <div class="white-rose-bottom"></div>
                 </div>
-                <div class="card detail-card fade-in">
-                    <div class="detail-icon">
+
+                <div class="card fade-in">
+                    <div class="white-rose-top"></div>
+                    <div style="font-size: 1.6rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
                         <i class="far fa-calendar-alt"></i>
                     </div>
                     <h3>Date & Time</h3>
-                    <p>Monday, December 8th, 2025</p>
-                    <p>Ceremony begins at 7:30 - 9:00 AM</p>
-                    <div id="countdown" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--light-gray);">
-                        <p style="font-weight: 600; color: var(--rose-gold); margin-bottom: 1rem;">Counting Down To Our Big Day</p>
-                        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                            <div style="text-align: center;">
-                                <div id="days" style="font-size: 2rem; font-weight: 700; color: var(--rose-gold);">0</div>
-                                <div style="font-size: 0.9rem; color: #777;">Days</div>
-                            </div>
-                            <div style="text-align: center;">
-                                <div id="hours" style="font-size: 2rem; font-weight: 700; color: var(--rose-gold);">0</div>
-                                <div style="font-size: 0.9rem; color: #777;">Hours</div>
-                            </div>
-                            <div style="text-align: center;">
-                                <div id="minutes" style="font-size: 2rem; font-weight: 700; color: var(--rose-gold);">0</div>
-                                <div style="font-size: 0.9rem; color: #777;">Minutes</div>
-                            </div>
-                            <div style="text-align: center;">
-                                <div id="seconds" style="font-size: 2rem; font-weight: 700; color: var(--rose-gold);">0</div>
-                                <div style="font-size: 0.9rem; color: #777;">Seconds</div>
-                            </div>
+                    <p><strong>Monday, December 8th, 2025</strong></p>
+                    <p style="font-size: 0.85rem;">Ceremony begins at 7:30 - 9:00 AM</p>
+
+                    <div id="countdown" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(88, 111, 131, 0.3);">
+                        <p class="serif-title" style="margin-bottom: 0.5rem;">Counting Down To Our Big Day</p>
+                        
+                        <div class="countdown-grid">
+                            <div class="count-box"><div class="num" id="days">0</div><div class="label">Days</div></div>
+                            <div class="count-box"><div class="num" id="hours">0</div><div class="label">Hours</div></div>
+                            <div class="count-box"><div class="num" id="minutes">0</div><div class="label">Minutes</div></div>
+                            <div class="count-box"><div class="num" id="seconds">0</div><div class="label">Seconds</div></div>
                         </div>
                     </div>
+                    <div class="white-rose-bottom"></div>
                 </div>
-                <div class="card detail-card fade-in">
-                    <div class="detail-icon">
+
+                <div class="card fade-in">
+                    <div class="white-rose-top"></div>
+                    <div style="font-size: 1.6rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
                         <i class="fas fa-tshirt"></i>
                     </div>
                     <h3>Attire</h3>
-                    <p>Traditional Formal Attire</p>
-                    <p>Surakarta/Solo Style</p>
+                    <p><strong>Traditional Formal Attire</strong></p>
+                    <p style="font-size: 0.85rem;">Surakarta/Solo Style</p>
+                    <div class="white-rose-bottom"></div>
                 </div>
             </div>
         </div>
@@ -895,16 +867,18 @@
 
     <section class="rsvp" id="rsvp">
         <div class="container">
-            <h2 class="text-center fade-in">We Hope You Can Join Us</h2>
-            <div class="rsvp-form card fade-in">
+            <h2 class="fade-in">Join Our Day</h2>
+            <div class="card fade-in">
+                <div class="white-rose-top"></div>
                 <div id="rsvpAlert" class="alert"></div>
+                
                 <form id="weddingRsvp">
                     <input type="hidden" id="guestId" value="1">
                     
                     <div class="form-group">
                         <label for="guestEmail">Your Email *</label>
                         <input type="email" id="guestEmail" class="form-control" required placeholder="your@email.com">
-                        <small style="color: #777; font-size: 0.9rem;">We'll send you confirmation and wedding day reminder</small>
+                        <small style="color: var(--text-muted); font-size: 0.75rem; font-family: var(--font-serif);">We'll send you confirmation and wedding day reminder</small>
                     </div>
 
                     <div class="form-group">
@@ -926,34 +900,42 @@
                         <input type="number" id="totalGuests" class="form-control" min="1" max="5" value="1" required>
                     </div>
 
-                    <button type="submit" class="btn" style="width: 100%;">Submit RSVP</button>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 0.5rem;">
+                        Submit RSVP
+                    </button>
                 </form>
+                <div class="white-rose-bottom"></div>
             </div>
         </div>
     </section>
 
     <section class="qr-section" id="qr">
         <div class="container">
-            <h2 class="text-center fade-in">Your Digital Invitation</h2>
+            <h2 class="fade-in">Digital Invitation</h2>
             <div class="qr-container fade-in">
+                <div class="white-rose-top"></div>
+                <div class="ribbon-banner">🎀 Check-in Pass 🎀</div>
                 <div class="qr-code">
                     {!! $qrCode !!}
                 </div>
-                <div class="qr-actions">
-                    <p>Your personal QR code for event check-in. Please present this code upon arrival.</p>
-                    <p><strong>Guest Code:</strong> {{ $guest->code }}</p>
+                <div>
+                    <p style="font-size: 0.85rem;">Your personal QR code for event check-in. Please present this code upon arrival.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Guest Code:</strong> {{ $guest->code }}</p>
                     <a href="/qr/{{ $guest->code }}" class="btn" style="margin-top: 1rem;">
-                    <i class="fas fa-expand"></i> View Full QR Code
+                        <i class="fas fa-expand"></i> View Full QR Code
                     </a>
                 </div>
+                <div class="white-rose-bottom"></div>
             </div>
         </div>
     </section>
 
     <section class="wishes" id="wishes">
         <div class="container">
-            <h2 class="text-center fade-in">Messages & Wishes</h2>
-            <div class="wishes-form card fade-in">
+            <h2 class="fade-in">Messages & Wishes</h2>
+            
+            <div class="card fade-in">
+                <div class="white-rose-top"></div>
                 <div id="wishAlert" class="alert"></div>
                 <form id="wishForm">
                     <div class="form-group">
@@ -964,63 +946,73 @@
                         <label for="wishMessage">Your Message *</label>
                         <textarea id="wishMessage" class="form-control" required placeholder="Share your well wishes for the couple"></textarea>
                     </div>
-                    <button type="submit" class="btn">Send Message</button>
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
                 </form>
-            </div>
-            <div class="wishes-list" id="wishesList">
-                <div class="wish-item fade-in visible">
-                    <div class="wish-author">John Doe</div>
-                    <div class="wish-message">Congratulations on your wedding! Wishing you a lifetime of love and happiness.</div>
+
+                <div class="wishes-list" id="wishesList">
+                    <div class="wish-item">
+                        <div class="wish-author">John Doe</div>
+                        <div class="wish-message">Congratulations on your wedding! Wishing you a lifetime of love and happiness.</div>
+                    </div>
+                    <div class="wish-item">
+                        <div class="wish-author">Jane Smith</div>
+                        <div class="wish-message">May your marriage be filled with all the right ingredients: love, humor, understanding, and patience.</div>
+                    </div>
                 </div>
-                <div class="wish-item fade-in visible">
-                    <div class="wish-author">Jane Smith</div>
-                    <div class="wish-message">May your marriage be filled with all the right ingredients: love, humor, understanding, and patience.</div>
-                </div>
+                <div class="white-rose-bottom"></div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Fabian & Naifa</h3>
-                    <p>Thank you for being part of our special day!</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#about">Our Story</a></li>
-                        <li><a href="#details">Details</a></li>
-                        <li><a href="#rsvp">RSVP</a></li>
-                    </ul>
-                </div>
-            </div>
+            <div class="white-rose-bottom"></div>
+            <h3>Fabian & Naifa</h3>
+            <p>Thank you for being part of our special day!</p>
+            
+            <ul class="footer-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#details">Details</a></li>
+                <li><a href="#rsvp">RSVP</a></li>
+            </ul>
+
             <div class="copyright">
                 <p>&copy; 2025 Fabian & Naifa Wedding. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Audio Control -->
     <audio id="background-music" src="{{ asset('audio/lagunikahan.mpeg') }}" loop preload="auto"></audio>
     <button id="play-pause-button" class="audio-control-btn" title="Kontrol Musik Latar">
         <i class="fas fa-play"></i> 
     </button>
 
-    <!-- Wedding Notification -->
+    <!-- Bottom Nav Bar -->
+    <div class="bottom-nav">
+        <a href="#hero"><i class="fa-solid fa-house"></i></a>
+        <a href="#about"><i class="fa-solid fa-heart"></i></a>
+        <a href="#details"><i class="fa-solid fa-calendar-check"></i></a>
+        <a href="#rsvp"><i class="fa-solid fa-clipboard-check"></i></a>
+        <a href="#qr"><i class="fa-solid fa-qrcode"></i></a>
+        <a href="#wishes"><i class="fa-solid fa-comment-dots"></i></a>
+    </div>
+
+    <!-- Pop-up Modal Bunga Mawar Berkumpulan -->
     <div class="notification-overlay" id="notificationOverlay"></div>
     <div class="wedding-notification" id="weddingNotification">
-        <h2>🎉 The Wedding Has Begun! 💒</h2>
+        <div class="white-rose-top" style="height: 100px;"></div>
+        <div class="ribbon-banner">✨ Special Announcement ✨</div>
+        <h2 style="font-size: 2.3rem; margin-bottom: 0.5rem;">The Wedding Has Begun! 🎉</h2>
         <p>Fabian & Naifa's special moment is starting now!</p>
-        <button class="btn" onclick="closeNotification()">Celebrate With Us!</button>
+        <button class="btn" style="margin-top: 1rem;" onclick="closeNotification()">Celebrate With Us!</button>
+        <div class="white-rose-bottom" style="height: 100px;"></div>
     </div>
 
     <script>
-    // Get CSRF token
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-    // Header scroll effect
+    
     window.addEventListener('scroll', function() {
         const header = document.getElementById('header');
         if (window.scrollY > 100) {
@@ -1031,9 +1023,7 @@
     });
 
     document.addEventListener('DOMContentLoaded', function() {
-        // Fade in animation on scroll
         const fadeElements = document.querySelectorAll('.fade-in');
-
         const fadeInOnScroll = function() {
             fadeElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
@@ -1043,45 +1033,20 @@
                 }
             });
         };
-
-        // Initial check
+        
         fadeInOnScroll();
-
-        // Check on scroll
         window.addEventListener('scroll', fadeInOnScroll);
 
-        // Mobile Menu Toggle
         const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
-
         mobileMenu.addEventListener('click', function() {
-            navLinks.classList.toggle('open');
-            const icon = mobileMenu.querySelector('i');
-            if (navLinks.classList.contains('open')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navLinks.classList.contains('open')) {
-                    navLinks.classList.remove('open');
-                    document.getElementById('mobileMenu').querySelector('i').classList.remove('fa-times');
-                    document.getElementById('mobileMenu').querySelector('i').classList.add('fa-bars');
-                }
-            });
-        });
-
-        // Music Control
+        // Audio
         const audio = document.getElementById('background-music');
         const playPauseButton = document.getElementById('play-pause-button');
         
         audio.volume = 0.4;
-
         function togglePlayPause() {
             if (audio.paused) {
                 audio.play()
@@ -1089,14 +1054,13 @@
                         playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
                     })
                     .catch(error => {
-                        console.log('Pemutaran diblokir oleh browser:', error);
+                        console.log('Playback error:', error);
                     });
             } else {
                 audio.pause();
                 playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
             }
         }
-
         playPauseButton.addEventListener('click', togglePlayPause);
         
         document.body.addEventListener('click', function attemptPlayOnce() {
@@ -1105,33 +1069,31 @@
                     .then(() => {
                         playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
                     })
-                    .catch(e => console.log("Gagal memicu play awal:", e));
+                    .catch(e => console.log("Play error:", e));
             }
             document.body.removeEventListener('click', attemptPlayOnce);
         });
 
         // Countdown Timer
         let notificationShown = false;
-
         function updateCountdown() {
             const weddingDate = new Date('2025-12-08T07:30:00').getTime();
             const now = new Date().getTime();
             const distance = weddingDate - now;
-
+            
             if (distance > 0) {
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
+                
                 document.getElementById('days').textContent = days;
                 document.getElementById('hours').textContent = hours;
                 document.getElementById('minutes').textContent = minutes;
                 document.getElementById('seconds').textContent = seconds;
             } else {
-                document.getElementById('countdown').innerHTML = '<p style="font-weight: 600; color: var(--rose-gold);">The Wedding Day is Here! 🎉</p>';
+                document.getElementById('countdown').innerHTML = '<p style="font-weight: 600; color: var(--blue-dark);">The Wedding Day is Here! 🎉</p>';
                 
-                // Show notification only once
                 if (!notificationShown) {
                     showWeddingNotification();
                     notificationShown = true;
@@ -1140,13 +1102,8 @@
         }
 
         function showWeddingNotification() {
-            // Check if user has RSVP'd
             const hasRSVP = localStorage.getItem('hasRSVP') === 'true';
-            
-            if (!hasRSVP) {
-                console.log('User has not RSVP\'d, notification not shown');
-                return;
-            }
+            if (!hasRSVP) return;
             
             const overlay = document.getElementById('notificationOverlay');
             const notification = document.getElementById('weddingNotification');
@@ -1154,7 +1111,6 @@
             overlay.classList.add('show');
             notification.classList.add('show');
             
-            // Browser notification (if permission granted)
             if ('Notification' in window && Notification.permission === 'granted') {
                 new Notification('🎉 Wedding Started!', {
                     body: 'Fabian & Naifa\'s wedding ceremony has begun!',
@@ -1163,17 +1119,15 @@
                 });
             }
             
-            // Play confetti sound or celebration effect (optional)
             if (!audio.paused) {
-                audio.volume = 0.6; // Increase volume for celebration
+                audio.volume = 0.6;
             }
         }
 
-        // Update countdown setiap detik
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // RSVP Form Submission
+        // RSVP Form
         document.getElementById('weddingRsvp').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -1201,126 +1155,90 @@
                         total_guests: totalGuests
                     })
                 });
-
                 const data = await response.json();
                 
                 const alertBox = document.getElementById('rsvpAlert');
                 if (data.success) {
-                    // Simpan status RSVP ke localStorage
                     if (attendance.value === 'attending') {
                         localStorage.setItem('hasRSVP', 'true');
-                        
-                        // Request notification permission
                         if ('Notification' in window && Notification.permission === 'default') {
-                            Notification.requestPermission().then(permission => {
-                                if (permission === 'granted') {
-                                    console.log('Notification permission granted');
-                                }
-                            });
+                            Notification.requestPermission();
                         }
                     }
                     
                     alertBox.className = 'alert alert-success';
-                    alertBox.textContent = 'RSVP submitted successfully! Check your email for confirmation and wedding day reminder!';
+                    alertBox.textContent = 'RSVP submitted successfully!';
                     alertBox.style.display = 'block';
-                    
                     alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 } else {
                     alertBox.className = 'alert alert-error';
-                    alertBox.textContent = 'Failed to submit RSVP. Please try again.';
+                    alertBox.textContent = 'Failed to submit RSVP.';
                     alertBox.style.display = 'block';
                 }
 
-                setTimeout(() => {
-                    alertBox.style.display = 'none';
-                }, 5000);
-
+                setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
             } catch (error) {
                 console.error('Error:', error);
-                
                 const alertBox = document.getElementById('rsvpAlert');
                 alertBox.className = 'alert alert-error';
-                alertBox.textContent = 'An error occurred. Please try again.';
+                alertBox.textContent = 'An error occurred.';
                 alertBox.style.display = 'block';
-                
-                setTimeout(() => {
-                    alertBox.style.display = 'none';
-                }, 5000);
+                setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
             }
         });
 
-        // Wish Form Submission
-document.getElementById('wishForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+        // Wish Form
+        document.getElementById('wishForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('wishName').value;
+            const message = document.getElementById('wishMessage').value;
 
-    const name = document.getElementById('wishName').value;
-    const message = document.getElementById('wishMessage').value;
+            try {
+                const response = await fetch('/wishes', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    body: JSON.stringify({ name: name, message: message })
+                });
+                const data = await response.json();
 
-    try {
-        // KIRIM ke backend
-        const response = await fetch('/wishes', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': csrfToken
-            },
-            body: JSON.stringify({
-                name: name,
-                message: message
-            })
+                if (data.success) {
+                    const wishesList = document.getElementById('wishesList');
+                    const newWish = document.createElement('div');
+                    newWish.className = 'wish-item';
+                    newWish.innerHTML = `
+                        <div class="wish-author">${name}</div>
+                        <div class="wish-message">${message}</div>
+                    `;
+                    wishesList.prepend(newWish);
+                    
+                    document.getElementById('wishForm').reset();
+                    
+                    const alertBox = document.getElementById('wishAlert');
+                    alertBox.className = 'alert alert-success';
+                    alertBox.textContent = data.message;
+                    alertBox.style.display = 'block';
+
+                    setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
+                } else {
+                    const alertBox = document.getElementById('wishAlert');
+                    alertBox.className = 'alert alert-error';
+                    alertBox.textContent = 'Failed to submit wish.';
+                    alertBox.style.display = 'block';
+                    setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred.');
+            }
         });
+    });
 
-        const data = await response.json();
-
-        if (data.success) {
-            // Tampilkan di UI
-            const wishesList = document.getElementById('wishesList');
-            const newWish = document.createElement('div');
-            newWish.className = 'wish-item fade-in visible';
-            newWish.innerHTML = `
-                <div class="wish-author">${name}</div>
-                <div class="wish-message">${message}</div>
-            `;
-            wishesList.prepend(newWish);
-
-            // Reset form
-            document.getElementById('wishForm').reset();
-
-            // Show success alert
-            const alertBox = document.getElementById('wishAlert');
-            alertBox.className = 'alert alert-success';
-            alertBox.textContent = data.message;
-            alertBox.style.display = 'block';
-
-            setTimeout(() => {
-                alertBox.style.display = 'none';
-            }, 5000);
-        } else {
-            // Show error alert
-            const alertBox = document.getElementById('wishAlert');
-            alertBox.className = 'alert alert-error';
-            alertBox.textContent = 'Failed to submit wish. Please try again.';
-            alertBox.style.display = 'block';
-            
-            setTimeout(() => {
-                alertBox.style.display = 'none';
-            }, 5000);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again.');
-    }
-});  // Tutup addEventListener Wish Form
-
-        });  // Tutup DOMContentLoaded ← INI YANG KURANG!
-
-    // Close notification function
     function closeNotification() {
-        const overlay = document.getElementById('notificationOverlay');
-        const notification = document.getElementById('weddingNotification');
-        
-        overlay.classList.remove('show');
-        notification.classList.remove('show');
+        document.getElementById('notificationOverlay').classList.remove('show');
+        document.getElementById('weddingNotification').classList.remove('show');
     }
     </script>
 </body>
