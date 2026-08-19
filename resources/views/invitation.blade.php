@@ -45,68 +45,52 @@
         }
 
         body {
-    font-family: var(--font-sans);
-    color: var(--text-blue);
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    /* Latar Belakang Gradasi Soft Cream - Seafoam khas Pernikahan */
-    background: linear-gradient(135deg, #fdfbf7 0%, #e8f0ed 50%, #f7f3ec 100%);
-    background-attachment: fixed;
-    line-height: 1.7;
-    overflow-x: hidden;
-    position: relative;
-}
+            font-family: var(--font-sans);
+            color: var(--text-blue);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fdfbf7 0%, #e8f0ed 50%, #f7f3ec 100%);
+            background-attachment: fixed;
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-/* Container untuk animasi elemen bergerak */
-.bg-animation-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Supaya tombol & kartu tetap bisa diklik */
-    z-index: 0;
-    overflow: hidden;
-}
+        .bg-animation-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
 
-/* Style umum untuk elemen kelopak mawar / daun */
-.petal {
-    position: absolute;
-    top: -10%;
-    background: radial-gradient(circle, rgba(255, 240, 243, 0.8) 0%, rgba(240, 215, 220, 0.6) 100%);
-    border-radius: 150% 0 150% 0;
-    filter: blur(0.5px) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.05));
-    animation: floatDown linear infinite;
-}
+        .petal {
+            position: absolute;
+            top: -10%;
+            background: radial-gradient(circle, rgba(255, 240, 243, 0.8) 0%, rgba(240, 215, 220, 0.6) 100%);
+            border-radius: 150% 0 150% 0;
+            filter: blur(0.5px) drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.05));
+            animation: floatDown linear infinite;
+        }
 
-/* Animasi Gerakan Jatuh & Meliuk Halus */
-@keyframes floatDown {
-    0% {
-        transform: translateY(0) rotate(0deg) translateX(0);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.8;
-    }
-    90% {
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(110vh) rotate(720deg) translateX(80px);
-        opacity: 0;
-    }
-}
+        @keyframes floatDown {
+            0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(110vh) rotate(720deg) translateX(80px); opacity: 0; }
+        }
 
-/* Variasi Ukuran, Posisi, dan Kecepatan Elemen Bergerak */
-.petal:nth-child(1) { left: 10%; width: 18px; height: 24px; animation-duration: 12s; animation-delay: 0s; }
-.petal:nth-child(2) { left: 25%; width: 14px; height: 18px; animation-duration: 16s; animation-delay: 2s; background: rgba(220, 235, 228, 0.7); } /* Sentuhan daun hijau */
-.petal:nth-child(3) { left: 40%; width: 22px; height: 28px; animation-duration: 14s; animation-delay: 4s; }
-.petal:nth-child(4) { left: 65%; width: 16px; height: 20px; animation-duration: 18s; animation-delay: 1s; }
-.petal:nth-child(5) { left: 80%; width: 20px; height: 26px; animation-duration: 11s; animation-delay: 3s; background: rgba(220, 235, 228, 0.7); }
-.petal:nth-child(6) { left: 92%; width: 15px; height: 22px; animation-duration: 15s; animation-delay: 5s; }
+        .petal:nth-child(1) { left: 10%; width: 18px; height: 24px; animation-duration: 12s; animation-delay: 0s; }
+        .petal:nth-child(2) { left: 25%; width: 14px; height: 18px; animation-duration: 16s; animation-delay: 2s; background: rgba(220, 235, 228, 0.7); }
+        .petal:nth-child(3) { left: 40%; width: 22px; height: 28px; animation-duration: 14s; animation-delay: 4s; }
+        .petal:nth-child(4) { left: 65%; width: 16px; height: 20px; animation-duration: 18s; animation-delay: 1s; }
+        .petal:nth-child(5) { left: 80%; width: 20px; height: 26px; animation-duration: 11s; animation-delay: 3s; background: rgba(220, 235, 228, 0.7); }
+        .petal:nth-child(6) { left: 92%; width: 15px; height: 22px; animation-duration: 15s; animation-delay: 5s; }
 
-        /* Slawir Transparan di Background Samping */
         body::before {
             content: "";
             position: fixed;
@@ -127,81 +111,56 @@
             z-index: 5;
         }
 
-        /* ELEMEN BUNGAN MAWAR PUTIH BERKUMPULAN (BUNCH) */
-        /* Container Bunga Atas & Bawah */
-/* Atur container bunga agar fleksibel dan tidak membatasi ukuran gambar */
-.white-rose-top,
-.white-rose-bottom {
-    width: 100%;
-    height: auto; /* Biarkan tinggi menyesuaikan proporsi gambar */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-    overflow: visible;
-}
+        .white-rose-top, .white-rose-bottom {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            overflow: visible;
+        }
 
-/* 2. MAWAR ATAS (Melebar Penuh Ke Sudut Kartu) */
-.white-rose-top {
-    width: calc(100% + 3rem); /* Menarik bunga keluar melebihi padding kanan-kiri card */
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-}
+        .white-rose-top {
+            width: calc(100% + 3rem);
+            margin-left: -1.5rem;
+            margin-right: -1.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
 
-.white-rose-top img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-}
-/* 3. MAWAR BAWAH */
-.white-rose-bottom {
-    width: calc(100% + 3rem);
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-    margin-bottom: -1.5rem; /* Menempel ke pinggir paling bawah card */
-    margin-top: 1.5rem;
-}
+        .white-rose-top img, .white-rose-bottom img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
 
-.white-rose-bottom img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-}
+        .white-rose-bottom {
+            width: calc(100% + 3rem);
+            margin-left: -1.5rem;
+            margin-right: -1.5rem;
+            margin-bottom: -1.5rem;
+            margin-top: 1.5rem;
+        }
 
-/* Bikin gambar mawar tampil PENUH melebar memenuhi kartu */
-.white-rose-top img,
-.white-rose-bottom img {
-    width: 100%; /* Memenuhi lebar kartu */
-    height: auto; /* Menjaga agar rasio bunga tidak gepeng */
-    display: block;
-    object-fit: cover;
-}
+        .white-rose-garland {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
 
-/* Atur container mawar tengah agar fleksibel */
-.white-rose-garland {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1.5rem 0; /* Memberi jarak atas & bawah yang pas dari teks dan foto */
-}
+        .white-rose-garland img, .rose-garland-img {
+            width: 90% !important;
+            max-width: 450px;
+            height: auto !important;
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.06));
+        }
 
-/* Memperbesar gambar mawar tengah */
-.white-rose-garland img,
-.rose-garland-img {
-    width: 90% !important; /* Melebarkan gambar hingga 90% lebar kartu */
-    max-width: 450px;       /* Mencegah gambar terlalu raksasa di layar PC */
-    height: auto !important; /* Menjaga rasio bunga agar tidak gepeng */
-    display: block;
-    margin: 0 auto;
-    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.06)); /* Efek bayangan lembut */
-}
-
-        /* Pita Aesthetic Frame */
         .ribbon-banner {
             display: inline-block;
             position: relative;
@@ -215,29 +174,15 @@
             text-transform: uppercase;
         }
 
-        /* Typography */
         h1, h2, h3 {
             font-family: var(--font-cursive);
             color: var(--blue-dark);
             font-weight: 400;
         }
 
-        h1 {
-            font-size: 4.2rem;
-            margin-bottom: 0.2rem;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-        }
-
-        h2 {
-            font-size: 3.2rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        h3 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
+        h1 { font-size: 4.2rem; margin-bottom: 0.2rem; text-shadow: 1px 1px 2px rgba(255,255,255,0.8); }
+        h2 { font-size: 3.2rem; margin-bottom: 1rem; text-align: center; }
+        h3 { font-size: 2.2rem; margin-bottom: 0.5rem; }
 
         p {
             color: var(--text-muted);
@@ -254,24 +199,19 @@
             font-size: 0.8rem;
         }
 
-        section {
-            padding: 3.5rem 0;
-        }
+        section { padding: 3.5rem 0; }
 
-        /* Glass Cards */
-        /* 1. KARTU UTAMA & BACKGROUND TEXTURE */
-.card {
-    position: relative;
-    padding: 0 1.5rem 1.5rem 1.5rem; /* Padding atas dibuat 0 agar bunga menempel sempurna */
-    border-radius: 20px;
-    overflow: hidden; /* Memotong bunga agar melengkung rapi mengikuti sudut card */
-    
-    /* Background Motif Floral Transparan Mewah */
-    background-color: #fdfbf7;
-    background-image: radial-gradient(#d4c5b9 0.75px, transparent 0.75px), radial-gradient(#d4c5b9 0.75px, #fdfbf7 0.75px);
-    background-size: 30px 30px;
-    background-position: 0 0, 15px 15px;
-}
+        .card {
+            position: relative;
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #fdfbf7;
+            background-image: radial-gradient(#d4c5b9 0.75px, transparent 0.75px), radial-gradient(#d4c5b9 0.75px, #fdfbf7 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            text-align: center;
+        }
 
         .fade-in {
             opacity: 0;
@@ -284,7 +224,6 @@
             transform: translateY(0);
         }
 
-        /* Arch Photo */
         .arch-photo-container {
             width: 200px;
             height: 280px;
@@ -302,7 +241,6 @@
             object-fit: cover;
         }
 
-        /* Amplop Estetik / Envelope Container */
         .envelope-card {
             background: linear-gradient(135deg, #F5EFE6 0%, #E2ECED 100%);
             border: 2px dashed rgba(62, 95, 123, 0.3);
@@ -325,7 +263,6 @@
             font-family: var(--font-serif);
         }
 
-        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -361,6 +298,24 @@
             color: #FFFFFF !important;
         }
 
+        /* Fitur Bank Card */
+        .bank-card {
+            background: #ffffff;
+            border: 1px solid rgba(88, 111, 131, 0.2);
+            border-radius: 16px;
+            padding: 1.2rem;
+            margin-top: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .bank-number {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--blue-dark);
+            letter-spacing: 1.5px;
+            margin: 0.5rem 0;
+        }
+
         /* Form Inputs */
         .form-group {
             margin-bottom: 1.2rem;
@@ -394,32 +349,12 @@
             box-shadow: 0 0 0 3px rgba(62, 95, 123, 0.12);
         }
 
-        textarea.form-control {
-            min-height: 100px;
-            resize: vertical;
-        }
+        textarea.form-control { min-height: 100px; resize: vertical; }
 
-        .radio-group {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.5rem;
-            flex-wrap: wrap;
-        }
+        .radio-group { display: flex; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap; }
+        .radio-option { display: flex; align-items: center; gap: 0.5rem; accent-color: var(--blue-ocean); }
+        .radio-option label { cursor: pointer; margin-bottom: 0; color: var(--text-blue); }
 
-        .radio-option {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            accent-color: var(--blue-ocean);
-        }
-
-        .radio-option label {
-            cursor: pointer;
-            margin-bottom: 0;
-            color: var(--text-blue);
-        }
-
-        /* Header Navigation */
         header {
             position: fixed;
             top: 0;
@@ -445,19 +380,9 @@
             padding: 0 1.2rem;
         }
 
-        .logo {
-            font-family: var(--font-cursive);
-            font-size: 1.8rem;
-            color: var(--blue-dark);
-        }
+        .logo { font-family: var(--font-cursive); font-size: 1.8rem; color: var(--blue-dark); }
+        .mobile-menu { font-size: 1.2rem; cursor: pointer; color: var(--blue-dark); }
 
-        .mobile-menu {
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: var(--blue-dark);
-        }
-
-        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -475,7 +400,6 @@
             margin-top: 0.3rem;
         }
 
-        /* Countdown Grid */
         .countdown-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -504,7 +428,6 @@
             text-transform: uppercase;
         }
 
-        /* QR Code Frame */
         .qr-container {
             background: linear-gradient(165deg, rgba(247, 243, 235, 0.95) 0%, rgba(200, 217, 219, 0.9) 100%);
             border-radius: 28px;
@@ -529,12 +452,8 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        .qr-code img, .qr-code svg {
-            width: 100%;
-            height: 100%;
-        }
+        .qr-code img, .qr-code svg { width: 100%; height: 100%; }
 
-        /* Wishes List */
         .wishes-list {
             margin-top: 1.5rem;
             max-height: 280px;
@@ -564,7 +483,6 @@
             font-family: var(--font-serif);
         }
 
-        /* Footer */
         footer {
             background-color: var(--blue-dark);
             color: #FFFFFF;
@@ -575,14 +493,8 @@
             overflow: hidden;
         }
 
-        footer h3 {
-            color: #FFFFFF;
-        }
-
-        footer p, .copyright p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
-        }
+        footer h3 { color: #FFFFFF; }
+        footer p, .copyright p { color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; }
 
         .footer-links {
             list-style: none;
@@ -599,7 +511,6 @@
             font-family: var(--font-serif);
         }
 
-        /* Audio Control Button */
         .audio-control-btn {
             position: fixed;
             bottom: 80px; 
@@ -619,7 +530,6 @@
             justify-content: center;
         }
 
-        /* Bottom Floating Nav */
         .bottom-nav {
             position: fixed;
             bottom: 15px;
@@ -646,12 +556,8 @@
             transition: var(--transition);
         }
 
-        .bottom-nav a:hover {
-            opacity: 1;
-            color: var(--bg-seafoam);
-        }
+        .bottom-nav a:hover { opacity: 1; color: var(--bg-seafoam); }
 
-        /* Pop-up Gradasi Estetik */
         .wedding-notification {
             position: fixed;
             top: 50%;
@@ -671,9 +577,7 @@
             overflow: hidden;
         }
 
-        .wedding-notification.show {
-            transform: translate(-50%, -50%) scale(1);
-        }
+        .wedding-notification.show { transform: translate(-50%, -50%) scale(1); }
 
         .notification-overlay {
             position: fixed;
@@ -689,10 +593,7 @@
             transition: opacity 0.3s ease;
         }
 
-        .notification-overlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
+        .notification-overlay.show { opacity: 1; visibility: visible; }
 
         .alert {
             padding: 0.8rem;
@@ -703,15 +604,8 @@
             font-family: var(--font-serif);
         }
 
-        .alert-success {
-            background-color: #E2EFCB;
-            color: #2D5A27;
-        }
-
-        .alert-error {
-            background-color: #FCE8E6;
-            color: #C5221F;
-        }
+        .alert-success { background-color: #E2EFCB; color: #2D5A27; }
+        .alert-error { background-color: #FCE8E6; color: #C5221F; }
 
         .ornament-divider {
             color: var(--blue-ocean);
@@ -724,7 +618,6 @@
 </head>
 <body>
 
-    <!-- ELEMEN BACKGROUND BERGERAK (Floating Petals) -->
     <div class="bg-animation-container">
         <div class="petal"></div>
         <div class="petal"></div>
@@ -747,10 +640,9 @@
         <div class="container">
             <div class="hero-content fade-in">
                 <div class="card">
-                    <!-- Buket Mawar Putih Lebat Atas -->
                     <div class="white-rose-top">
-    <img src="{{ asset('images/mawar-putih-atas.png') }}" class="rose-img" alt="White Rose Decoration">
-</div>
+                        <img src="{{ asset('images/mawar-putih-atas.png') }}" class="rose-img" alt="White Rose Decoration">
+                    </div>
                     
                     <div class="ribbon-banner">🎀 The Wedding Of 🎀</div>
                     
@@ -766,10 +658,9 @@
 
                     <p style="font-style: italic;">We request the pleasure of your company to celebrate our marriage.</p>
                     
-                    <!-- Rangkaian Bunga Mawar Tengah -->
                     <div class="white-rose-garland">
-    <img src="{{ asset('images/mawar-putih-tengah.png') }}" class="rose-garland-img" alt="Rose Garland">
-</div>
+                        <img src="{{ asset('images/mawar-putih-tengah.png') }}" class="rose-garland-img" alt="Rose Garland">
+                    </div>
 
                     <div class="arch-photo-container">
                         <img src="{{ asset('images/FN.png') }}" alt="Fabian & Naifa">
@@ -780,12 +671,50 @@
                         <a href="#rsvp" class="btn btn-outline">Send RSVP</a>
                     </div>
                     
-                    <!-- Buket Mawar Putih Lebat Bawah -->
-                    <!-- MAWAR BAWAH (Dipasang di bawah tombol) -->
-    <div class="white-rose-bottom">
-        <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="White Rose Decoration Bottom">
-    </div>
+                    <div class="white-rose-bottom">
+                        <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="White Rose Decoration Bottom">
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION BIODATA MEMPELAI BARU -->
+    <section class="couples" id="couples">
+        <div class="container">
+            <h2 class="fade-in">The Happy Couple</h2>
+            <div class="card fade-in">
+                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
+                
+                <!-- Groom -->
+                <div style="margin: 1rem 0;">
+                    <div class="arch-photo-container" style="width: 150px; height: 200px;">
+                        <img src="{{ asset('images/FN.png') }}" alt="Fabian Profile">
+                    </div>
+                    <h3 style="font-size: 2.5rem; margin-top: 0.5rem;">Fabian Ahza</h3>
+                    <p style="margin-bottom: 0.3rem;"><strong>Putra dari:</strong></p>
+                    <p>Bpk. Fathurrahman & Ibu Sarah</p>
+                    <a href="https://instagram.com" target="_blank" class="btn btn-outline" style="padding: 6px 16px; font-size: 0.75rem; margin-top: 0.3rem;">
+                        <i class="fab fa-instagram"></i> @fabianahza
+                    </a>
+                </div>
+
+                <div class="ornament-divider" style="margin: 1.5rem 0;">❀ & ❀</div>
+
+                <!-- Bride -->
+                <div style="margin: 1rem 0;">
+                    <div class="arch-photo-container" style="width: 150px; height: 200px;">
+                        <img src="{{ asset('images/FN.png') }}" alt="Naifa Profile">
+                    </div>
+                    <h3 style="font-size: 2.5rem; margin-top: 0.5rem;">Naifa Az-Zahra</h3>
+                    <p style="margin-bottom: 0.3rem;"><strong>Putri dari:</strong></p>
+                    <p>Bpk. Ahmad Subagyo & Ibu Maryam</p>
+                    <a href="https://instagram.com" target="_blank" class="btn btn-outline" style="padding: 6px 16px; font-size: 0.75rem; margin-top: 0.3rem;">
+                        <i class="fab fa-instagram"></i> @naifaazzahra
+                    </a>
+                </div>
+
+                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
             </div>
         </div>
     </section>
@@ -794,7 +723,7 @@
         <div class="container">
             <h2 class="fade-in">Our Love Story</h2>
             <div class="card fade-in">
-                <div class="white-rose-top"></div>
+                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
                 
                 <div class="ribbon-banner">🎗️ Endless Love 🎗️</div>
                 <h3>So This Is Love...</h3>
@@ -802,10 +731,10 @@
                 <p>As we stand on the brink of forever, we want you to be a part of our next chapter. Join us as we exchange vows and promise each other a lifetime of adventures.</p>
                 
                 <div class="arch-photo-container" style="width: 180px; height: 240px;">
-                    <img src="{{ asset('images/FN.png') }}" alt="Fabian & Haifa">
+                    <img src="{{ asset('images/FN.png') }}" alt="Fabian & Naifa">
                 </div>
 
-                <div class="white-rose-bottom"></div>
+                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
             </div>
         </div>
     </section>
@@ -816,7 +745,7 @@
             
             <div style="display: flex; flex-direction: column; gap: 1rem;">
                 <div class="card fade-in">
-                    <div class="white-rose-top"></div>
+                    <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
                     <div style="font-size: 1.6rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
@@ -826,11 +755,11 @@
                     <a href="https://maps.app.goo.gl/bDu22rrdEUnayUDw5" target="_blank" class="btn" style="margin-top: 0.5rem;">
                         <i class="fas fa-map-marked-alt"></i> Open in Google Maps
                     </a>
-                    <div class="white-rose-bottom"></div>
+                    <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
                 </div>
 
                 <div class="card fade-in">
-                    <div class="white-rose-top"></div>
+                    <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
                     <div style="font-size: 1.6rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
                         <i class="far fa-calendar-alt"></i>
                     </div>
@@ -848,19 +777,53 @@
                             <div class="count-box"><div class="num" id="seconds">0</div><div class="label">Seconds</div></div>
                         </div>
                     </div>
-                    <div class="white-rose-bottom"></div>
+                    <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
                 </div>
 
                 <div class="card fade-in">
-                    <div class="white-rose-top"></div>
+                    <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
                     <div style="font-size: 1.6rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
                         <i class="fas fa-tshirt"></i>
                     </div>
-                    <h3>Attire</h3>
+                    <h3>Dress Code</h3>
                     <p><strong>Traditional Formal Attire</strong></p>
-                    <p style="font-size: 0.85rem;">Surakarta/Solo Style</p>
-                    <div class="white-rose-bottom"></div>
+                    <p style="font-size: 0.85rem;">Surakarta/Solo Style or Earth Tone Suits & Dresses</p>
+                    <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION DIGITAL GIFT BARU -->
+    <section class="gift" id="gift">
+        <div class="container">
+            <h2 class="fade-in">Wedding Gift</h2>
+            <div class="card fade-in">
+                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
+                <div class="ribbon-banner">🎁 Love & Blessings 🎁</div>
+                <p>Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika Anda ingin memberi hadiah, Anda dapat mengirimkannya melalui:</p>
+
+                <!-- Rekening 1 -->
+                <div class="bank-card">
+                    <p style="margin-bottom: 0.2rem; font-weight: 600; color: var(--blue-ocean);">BANK BCA</p>
+                    <div class="bank-number" id="bankNum1">1234 5678 90</div>
+                    <p style="font-size: 0.8rem; margin-bottom: 0.5rem;">a.n Fabian Ahza</p>
+                    <button class="btn btn-outline" style="padding: 6px 18px; font-size: 0.75rem;" onclick="copyToClipboard('1234567890')">
+                        <i class="fas fa-copy"></i> Salin Rekening
+                    </button>
+                </div>
+
+                <!-- Rekening 2 -->
+                <div class="bank-card">
+                    <p style="margin-bottom: 0.2rem; font-weight: 600; color: var(--blue-ocean);">BANK MANDIRI</p>
+                    <div class="bank-number" id="bankNum2">0987 6543 21</div>
+                    <p style="font-size: 0.8rem; margin-bottom: 0.5rem;">a.n Naifa Az-Zahra</p>
+                    <button class="btn btn-outline" style="padding: 6px 18px; font-size: 0.75rem;" onclick="copyToClipboard('0987654321')">
+                        <i class="fas fa-copy"></i> Salin Rekening
+                    </button>
+                </div>
+
+                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
             </div>
         </div>
     </section>
@@ -869,7 +832,7 @@
         <div class="container">
             <h2 class="fade-in">Join Our Day</h2>
             <div class="card fade-in">
-                <div class="white-rose-top"></div>
+                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
                 <div id="rsvpAlert" class="alert"></div>
                 
                 <form id="weddingRsvp">
@@ -904,7 +867,7 @@
                         Submit RSVP
                     </button>
                 </form>
-                <div class="white-rose-bottom"></div>
+                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
             </div>
         </div>
     </section>
@@ -913,7 +876,7 @@
         <div class="container">
             <h2 class="fade-in">Digital Invitation</h2>
             <div class="qr-container fade-in">
-                <div class="white-rose-top"></div>
+                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
                 <div class="ribbon-banner">🎀 Check-in Pass 🎀</div>
                 <div class="qr-code">
                     {!! $qrCode !!}
@@ -925,7 +888,7 @@
                         <i class="fas fa-expand"></i> View Full QR Code
                     </a>
                 </div>
-                <div class="white-rose-bottom"></div>
+                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
             </div>
         </div>
     </section>
@@ -935,7 +898,7 @@
             <h2 class="fade-in">Messages & Wishes</h2>
             
             <div class="card fade-in">
-                <div class="white-rose-top"></div>
+                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
                 <div id="wishAlert" class="alert"></div>
                 <form id="wishForm">
                     <div class="form-group">
@@ -959,21 +922,23 @@
                         <div class="wish-message">May your marriage be filled with all the right ingredients: love, humor, understanding, and patience.</div>
                     </div>
                 </div>
-                <div class="white-rose-bottom"></div>
+                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <div class="white-rose-bottom"></div>
+            <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
             <h3>Fabian & Naifa</h3>
             <p>Thank you for being part of our special day!</p>
             
             <ul class="footer-links">
                 <li><a href="#hero">Home</a></li>
+                <li><a href="#couples">Couples</a></li>
                 <li><a href="#about">Our Story</a></li>
                 <li><a href="#details">Details</a></li>
+                <li><a href="#gift">Gift</a></li>
                 <li><a href="#rsvp">RSVP</a></li>
             </ul>
 
@@ -983,23 +948,21 @@
         </div>
     </footer>
 
-    <!-- Audio Control -->
     <audio id="background-music" src="{{ asset('audio/lagunikahan.mpeg') }}" loop preload="auto"></audio>
     <button id="play-pause-button" class="audio-control-btn" title="Kontrol Musik Latar">
         <i class="fas fa-play"></i> 
     </button>
 
-    <!-- Bottom Nav Bar -->
     <div class="bottom-nav">
         <a href="#hero"><i class="fa-solid fa-house"></i></a>
-        <a href="#about"><i class="fa-solid fa-heart"></i></a>
+        <a href="#couples"><i class="fa-solid fa-user-group"></i></a>
         <a href="#details"><i class="fa-solid fa-calendar-check"></i></a>
+        <a href="#gift"><i class="fa-solid fa-gift"></i></a>
         <a href="#rsvp"><i class="fa-solid fa-clipboard-check"></i></a>
         <a href="#qr"><i class="fa-solid fa-qrcode"></i></a>
         <a href="#wishes"><i class="fa-solid fa-comment-dots"></i></a>
     </div>
 
-    <!-- Pop-up Modal Bunga Mawar Berkumpulan -->
     <div class="notification-overlay" id="notificationOverlay"></div>
     <div class="wedding-notification" id="weddingNotification">
         <div class="white-rose-top" style="height: 100px;"></div>
@@ -1013,6 +976,14 @@
     <script>
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Nomor rekening berhasil disalin: ' + text);
+        }).catch(err => {
+            console.error('Gagal menyalin: ', err);
+        });
+    }
+
     window.addEventListener('scroll', function() {
         const header = document.getElementById('header');
         if (window.scrollY > 100) {
