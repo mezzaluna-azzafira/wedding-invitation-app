@@ -614,9 +614,374 @@
             margin: 0.5rem 0;
             opacity: 0.75;
         }
+
+        /* Beri jarak aman di paling bawah halaman agar tidak tertutup nav */
+body {
+    padding-bottom: 120px !important;
+}
+
+/* Pastikan footer memiliki ruang lebih di bawah */
+footer {
+    padding-bottom: 80px !important;
+}
+
+/* Kunci ukuran QR Code agar tidak meluap keluar kartu */
+.qr-code img, 
+.qr-code svg {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Khusus merapatkan mawar di bagian Digital Pass / QR */
+.qr-container {
+    padding-top: 0 !important;
+    overflow: hidden !important;
+}
+
+.qr-container .white-rose-top {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.qr-container .white-rose-top img {
+    margin-top: -2px !important; /* Mendorong mawar mepet sampai paling atas */
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+}
+/* Menghilangkan gambar mawar khusus di area footer */
+footer .white-rose-top,
+footer .white-rose-bottom,
+footer img[src*="mawar"] {
+    display: none !important;
+}
+/* Buat footer full memenuhi bagian paling bawah halaman */
+body {
+    padding-bottom: 0 !important;
+}
+
+footer {
+    border-radius: 28px 28px 0 0 !important; /* Melengkung hanya di atas, bawahnya lurus */
+    margin-bottom: 0 !important;
+    padding-bottom: 90px !important; /* Ruang ekstra di dalam footer agar tidak tertutup nav */
+    width: 100% !important;
+}
+
+body {
+    background-image: url('/images/bg-wedding.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+}
+
+/* ==========================================
+   STYLING KHUSUS GALERI FOTO (SAFE & NEAT)
+   ========================================== */
+.gallery-section {
+    width: 100%;
+    max-width: 480px; /* Menyesuaikan frame kartu agar presisi */
+    margin: 30px auto;
+    padding: 20px 15px;
+    box-sizing: border-box;
+}
+
+.gallery-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.gallery-title h2 {
+    font-family: 'Playfair Display', serif, cursive; /* Menyesuaikan font nikahan */
+    font-size: 24px;
+    color: #2b3a4a;
+    margin: 0;
+}
+
+.gallery-title p {
+    font-size: 13px;
+    color: #7a8b9e;
+    margin-top: 4px;
+    letter-spacing: 1px;
+}
+
+/* Grid Rapi 2 Kolom */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 Kolom sejajar simetris */
+    gap: 12px; /* Jarak antar foto */
+}
+
+/* Frame Tiap Foto */
+.gallery-item {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* Membuat bingkai foto otomatis Kotak / Square (1:1) */
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    background-color: #f8f9fa;
+    border: 3px solid #ffffff; /* Efek bingkai putih rapi */
+}
+
+/* Gambar di dalam frame */
+.gallery-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Foto otomatis terpotong rapi tanpa melar */
+    transition: transform 0.4s ease;
+}
+
+/* Efek Zoom Halus Saat Disentuh / Hover */
+.gallery-item:hover img {
+    transform: scale(1.06);
+}
+
+/* ==========================================
+   COVER / WELCOME OVERLAY STYLING
+   ========================================== */
+#welcome-cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a;
+    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+/* Background Blur di Luar Kartu */
+.cover-bg-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/foto-cover.jpg'); /* Samakan dengan foto utama */
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(0.5);
+    transform: scale(1.1); /* Mencegah pinggiran blur putih */
+}
+
+/* Kartu Tengah Mobile-Frame */
+.cover-card {
+    position: relative;
+    width: 90%;
+    max-width: 420px;
+    height: 85vh;
+    max-height: 680px;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+
+/* Foto bagian atas kartu */
+.cover-image {
+    width: 100%;
+    height: 45%;
+    overflow: hidden;
+}
+
+.cover-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Isi Teks Kartu */
+.cover-content {
+    padding: 25px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    background: #fafafa;
+}
+
+.sub-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #666;
+    margin: 0;
+}
+
+.couple-name {
+    font-family: 'Playfair Display', serif, cursive;
+    font-size: 28px;
+    color: #1a2b3c;
+    margin: 5px 0 15px 0;
+}
+
+.dear-text {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 2px;
+}
+
+.guest-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a2b3c;
+    margin: 0 0 8px 0;
+}
+
+.invitation-text {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.4;
+    margin: 0 auto;
+    max-width: 80%;
+}
+
+/* Tombol Buka Undangan */
+.btn-open-invitation {
+    background-color: #2b3a4a;
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 15px auto 0 auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(43, 58, 74, 0.3);
+}
+
+.btn-open-invitation:hover {
+    background-color: #1a2530;
+    transform: translateY(-2px);
+}
+
+/* Class saat sampul dibuka (Menghilang ke atas) */
+.cover-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Container Utama Date & Time */
+.date-time-card {
+    text-align: center;
+    padding: 20px 15px;
+}
+
+.calendar-icon {
+    font-size: 1.8rem;
+    color: #2b3a4a;
+    margin-bottom: 10px;
+}
+
+.date-title {
+    font-family: 'Great Vibes', 'Playfair Display', cursive, serif;
+    font-size: 2.2rem;
+    color: #2b3a4a;
+    margin: 0;
+}
+
+.date-subtitle {
+    font-size: 1rem;
+    color: #2b3a4a;
+    margin: 8px 0 4px 0;
+}
+
+.ceremony-text {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0 0 15px 0;
+}
+
+.dotted-line {
+    border: none;
+    border-top: 1px dashed #ccc;
+    margin: 20px auto;
+    width: 80%;
+}
+
+/* Grid 4 Kotak Sejajar */
+.countdown-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 15px;
+}
+
+/* Tampilan Tiap Kotak Putih */
+.countdown-box {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 12px 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.countdown-box .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2b3a4a;
+    line-height: 1;
+}
+
+.countdown-box .label {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 6px;
+    font-style: italic;
+}
+
     </style>
 </head>
 <body>
+
+    <!-- OVERLAY COVER UTAMA -->
+<div id="welcome-cover">
+    <!-- Background foto besar yang di-blur -->
+    <div class="cover-bg-blur"></div>
+
+    <!-- Kartu Utama di Tengah -->
+    <div class="cover-card">
+        <!-- Foto Sampul Atas -->
+        <div class="cover-image">
+            <img src="/images/foto-cover.jpg" alt="Fabian & Naifa">
+        </div>
+
+        <!-- Konten Undangan -->
+        <div class="cover-content">
+            <p class="sub-title">PERNIKAHAN</p>
+            <h1 class="couple-name">Fabian & Naifa</h1>
+            
+            <div class="guest-box">
+                <p class="dear-text">Dear.</p>
+                <h3 class="guest-name">{{ $guest_name ?? 'Nama Tamu' }}</h3>
+                <p class="invitation-text">Kami mengundang Anda untuk menghadiri acara Pernikahan kami.</p>
+            </div>
+
+            <!-- Tombol Buka Undangan -->
+            <button type="button" class="btn-open-invitation" onclick="openInvitation()">
+                <i class="fas fa-envelope-open"></i> Buka Undangan
+            </button>
+        </div>
+    </div>
+</div>
 
     <div class="bg-animation-container">
         <div class="petal"></div>
@@ -719,6 +1084,35 @@
         </div>
     </section>
 
+    <!-- KODE GALERI FOTO (ISOLATED) -->
+<section class="gallery-section">
+    <div class="gallery-title">
+        <h2>Our Moments</h2>
+        <p>Memories of Us</p>
+    </div>
+
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="/images/foto1.jpg" alt="Gallery Photo 1">
+        </div>
+        <div class="gallery-item">
+            <img src="/images/foto2.jpg" alt="Gallery Photo 2">
+        </div>
+        <div class="gallery-item">
+            <img src="/images/foto3.jpg" alt="Gallery Photo 3">
+        </div>
+        <div class="gallery-item">
+            <img src="/images/foto4.jpg" alt="Gallery Photo 4">
+        </div>
+        <div class="gallery-item">
+            <img src="/images/foto5.jpg" alt="Gallery Photo 5">
+        </div>
+        <div class="gallery-item">
+            <img src="/images/foto6.jpg" alt="Gallery Photo 6">
+        </div>
+    </div>
+</section>
+
     <section class="about" id="about">
         <div class="container">
             <h2 class="fade-in">Our Love Story</h2>
@@ -740,60 +1134,89 @@
     </section>
 
     <section class="details" id="details">
-        <div class="container">
-            <h2 class="fade-in">Wedding Details</h2>
-            
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <div class="card fade-in">
-                    <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
-                    <div style="font-size: 1.6rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Location</h3>
-                    <p><strong>SMK Telkom Purwokerto</strong></p>
-                    <p style="font-size: 0.82rem;">Jl. DI Panjaitan No.128, Karangreja, Purwokerto Kidul, South Purwokerto District, Banyumas Regency, Central Java 53141</p>
-                    <a href="https://maps.app.goo.gl/bDu22rrdEUnayUDw5" target="_blank" class="btn" style="margin-top: 0.5rem;">
-                        <i class="fas fa-map-marked-alt"></i> Open in Google Maps
-                    </a>
-                    <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
+    <div class="container">
+        <h2 class="fade-in">Wedding Details</h2>
+        
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <!-- KARTU LOCATION -->
+            <div class="card fade-in">
+                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
+                <div style="font-size: 1.6rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Location</h3>
+                <p><strong>SMK Telkom Purwokerto</strong></p>
+                <p style="font-size: 0.82rem;">Jl. DI Panjaitan No.128, Karangreja, Purwokerto Kidul, South Purwokerto District, Banyumas Regency, Central Java 53141</p>
+                <a href="https://maps.app.goo.gl/bDu22rrdEUnayUDw5" target="_blank" class="btn" style="margin-top: 0.5rem;">
+                    <i class="fas fa-map-marked-alt"></i> Open in Google Maps
+                </a>
+                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
+            </div>
+
+            <!-- KARTU DATE & TIME -->
+            <div class="card" style="opacity: 1 !important; display: block !important; position: relative; overflow: hidden; padding-bottom: 0;">
+                <div class="white-rose-top" style="margin-top: -2px; padding: 0;">
+                    <img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top" style="width: 100%; height: auto; border-top-left-radius: 20px; border-top-right-radius: 20px;">
                 </div>
 
-                <div class="card fade-in">
-                    <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
-                    <div style="font-size: 1.6rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
+                <div style="padding: 10px 20px 20px 20px; text-align: center;">
+                    <div style="font-size: 1.8rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
                         <i class="far fa-calendar-alt"></i>
                     </div>
-                    <h3>Date & Time</h3>
-                    <p><strong>Monday, December 8th, 2025</strong></p>
-                    <p style="font-size: 0.85rem;">Ceremony begins at 7:30 - 9:00 AM</p>
+                    <h3 style="font-family: 'Great Vibes', 'Playfair Display', cursive, serif; font-size: 2.2rem; color: var(--blue-ocean); margin: 0 0 5px 0;">Date & Time</h3>
+                    <p style="font-size: 1rem; font-weight: 600; color: #2b3a4a; margin-bottom: 4px;">Monday, December 8th, 2025</p>
+                    <p style="font-size: 0.85rem; color: #555; font-style: italic; margin-top: 0;">Ceremony begins at 7:30 - 9:00 AM</p>
 
-                    <div id="countdown" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed rgba(88, 111, 131, 0.3);">
-                        <p class="serif-title" style="margin-bottom: 0.5rem;">Counting Down To Our Big Day</p>
+                    <div id="countdown" style="margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px dashed rgba(88, 111, 131, 0.3);">
+                        <p class="serif-title" style="margin-bottom: 0.8rem; font-size: 0.95rem; color: #4a5a6a;">Counting Down To Our Big Day</p>
                         
-                        <div class="countdown-grid">
-                            <div class="count-box"><div class="num" id="days">0</div><div class="label">Days</div></div>
-                            <div class="count-box"><div class="num" id="hours">0</div><div class="label">Hours</div></div>
-                            <div class="count-box"><div class="num" id="minutes">0</div><div class="label">Minutes</div></div>
-                            <div class="count-box"><div class="num" id="seconds">0</div><div class="label">Seconds</div></div>
+                        <div class="countdown-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px;">
+                            <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                                <div class="num" id="days" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
+                                <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Hari</div>
+                            </div>
+                            <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                                <div class="num" id="hours" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
+                                <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Jam</div>
+                            </div>
+                            <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                                <div class="num" id="minutes" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
+                                <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Menit</div>
+                            </div>
+                            <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                                <div class="num" id="seconds" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
+                                <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Detik</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
                 </div>
 
-                <div class="card fade-in">
-                    <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
-                    <div style="font-size: 1.6rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
-                        <i class="fas fa-tshirt"></i>
-                    </div>
-                    <h3>Dress Code</h3>
-                    <p><strong>Traditional Formal Attire</strong></p>
-                    <p style="font-size: 0.85rem;">Surakarta/Solo Style or Earth Tone Suits & Dresses</p>
-                    <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
+                <div class="white-rose-bottom" style="margin-bottom: -2px; padding: 0;">
+                    <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom" style="width: 100%; height: auto; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
                 </div>
             </div>
-        </div>
-    </section>
 
+            <!-- KARTU DRESS CODE -->
+            <div class="card fade-in" style="position: relative; overflow: hidden; padding-bottom: 20px;">
+                <div class="white-rose-top" style="margin-top: -2px; padding: 0;">
+                    <img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top" style="width: 100%; height: auto; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                </div>
+
+                <div style="padding: 15px 20px 0 20px; text-align: center;">
+                    <h3 style="font-family: 'Great Vibes', 'Playfair Display', cursive, serif; font-size: 2.2rem; color: var(--blue-ocean); margin: 5px 0;">Dress Code</h3>
+                    <p style="font-size: 1rem; font-weight: 600; color: #2b3a4a; margin-bottom: 4px;">Traditional Formal Attire</p>
+                    <p style="font-size: 0.85rem; color: #555; font-style: italic; margin-top: 0; line-height: 1.4;">Surakarta/Solo Style or Earth Tone Suits & Dresses</p>
+                </div>
+
+                <img src="{{ asset('images/dresscode.png') }}" alt="Dress Code Illustration" style="width: 100%; height: auto; display: block; mix-blend-mode: multiply; filter: contrast(110%);">
+
+                <div class="white-rose-bottom" style="margin-bottom: -2px; padding: 0;">
+                    <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom" style="width: 100%; height: auto; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+                </div>
+            </div>
+        </div> <!-- Penutup untuk flex container -->
+    </div> <!-- Penutup container -->
+</section>
     <!-- SECTION DIGITAL GIFT BARU -->
     <section class="gift" id="gift">
         <div class="container">
@@ -929,7 +1352,7 @@
 
     <footer>
         <div class="container">
-            <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
+            
             <h3>Fabian & Naifa</h3>
             <p>Thank you for being part of our special day!</p>
             
@@ -1212,5 +1635,83 @@
         document.getElementById('weddingNotification').classList.remove('show');
     }
     </script>
+
+    <script>
+function openInvitation() {
+    // Sembunyikan cover dengan animasi mulus ke atas
+    const cover = document.getElementById('welcome-cover');
+    cover.classList.add('cover-hidden');
+
+    // Memutar musik otomatis saat tombol diklik (Opsional)
+    const audio = document.getElementById('myAudio'); 
+    if (audio) {
+        audio.play();
+    }
+
+    // Mengaktifkan scroll pada body
+    document.body.style.overflow = 'auto';
+}
+
+// Kunci scroll halaman saat cover masih terbuka
+document.addEventListener("DOMContentLoaded", function() {
+    document.body.style.overflow = 'hidden';
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Tentukan tanggal & waktu acara (Format: YYYY-MM-DDTHH:mm:ss)
+    const targetDate = new Date("2026-12-08T07:30:00").getTime();
+
+    const timer = setInterval(function() {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+
+        if (difference < 0) {
+            clearInterval(timer);
+            document.getElementById("days").innerText = "0";
+            document.getElementById("hours").innerText = "0";
+            document.getElementById("minutes").innerText = "0";
+            document.getElementById("seconds").innerText = "0";
+            return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days;
+        document.getElementById("hours").innerText = hours;
+        document.getElementById("minutes").innerText = minutes;
+        document.getElementById("seconds").innerText = seconds;
+    }, 1000);
+});
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const targetDate = new Date("2025-12-08T07:30:00").getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                if (document.getElementById("days")) document.getElementById("days").innerText = days;
+                if (document.getElementById("hours")) document.getElementById("hours").innerText = hours;
+                if (document.getElementById("minutes")) document.getElementById("minutes").innerText = minutes;
+                if (document.getElementById("seconds")) document.getElementById("seconds").innerText = seconds;
+            }
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+    });
+</script>
 </body>
 </html>
