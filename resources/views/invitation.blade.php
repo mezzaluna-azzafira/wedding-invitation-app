@@ -1138,63 +1138,94 @@ body {
         <h2 class="fade-in">Wedding Details</h2>
         
         <div style="display: flex; flex-direction: column; gap: 1rem;">
-            <!-- KARTU LOCATION -->
-            <div class="card fade-in">
-                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
-                <div style="font-size: 1.6rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <h3>Location</h3>
-                <p><strong>SMK Telkom Purwokerto</strong></p>
-                <p style="font-size: 0.82rem;">Jl. DI Panjaitan No.128, Karangreja, Purwokerto Kidul, South Purwokerto District, Banyumas Regency, Central Java 53141</p>
-                <a href="https://maps.app.goo.gl/bDu22rrdEUnayUDw5" target="_blank" class="btn" style="margin-top: 0.5rem;">
-                    <i class="fas fa-map-marked-alt"></i> Open in Google Maps
-                </a>
-                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
-            </div>
 
+            <!-- KARTU LOKASI / LOCATION -->
+<div class="card" style="position: relative; overflow: hidden; text-align: center;">
+    
+    <!-- Mawar Atas -->
+    <div class="white-rose-top" style="margin-top: -2px; padding: 0;">
+        <img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top" style="width: 100%; height: auto; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+    </div>
+
+    <div style="padding: 10px 20px 20px 20px;">
+        <!-- Icon Location -->
+        <div style="font-size: 1.8rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
+            <i class="fas fa-map-marker-alt"></i>
+        </div>
+
+        <!-- Judul -->
+        <h3 style="font-family: 'Great Vibes', 'Playfair Display', cursive, serif; font-size: 2.2rem; color: var(--blue-ocean); margin: 0 0 10px 0;">Location</h3>
+
+        <!-- Gambar Lokasi/Gedung -->
+        <div style="margin: 15px auto; max-width: 90%; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <img src="{{ asset('images/hotel-mulia.webp') }}" alt="Grand Ballroom Hotel Mulia" style="width: 100%; height: auto; display: block; object-fit: cover;">
+        </div>
+
+        <!-- Nama Tempat & Alamat -->
+        <h4 style="font-size: 1.1rem; font-weight: 700; color: #2b3a4a; margin: 10px 0 5px 0;">Grand Ballroom Hotel Mulia Senayan</h4>
+        <p style="font-size: 0.85rem; color: #555; line-height: 1.5; margin: 0 0 20px 0; padding: 0 10px;">
+            Jl. Asia Afrika, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10270
+        </p>
+
+        <!-- Button Open in Google Maps -->
+        <a href="https://maps.app.goo.gl/jCy4SFAwyPjkoLpm7" target="_blank" rel="noopener noreferrer" 
+           style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: #3b597b; color: #ffffff; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 600; box-shadow: 0 4px 12px rgba(59, 89, 123, 0.3); transition: all 0.3s ease;">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>Open in Google Maps</span>
+        </a>
+    </div>
+
+    <!-- Mawar Bawah -->
+    <div class="white-rose-bottom" style="margin-bottom: -2px; padding: 0;">
+        <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom" style="width: 100%; height: auto; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+    </div>
+</div>
             <!-- KARTU DATE & TIME -->
-            <div class="card" style="opacity: 1 !important; display: block !important; position: relative; overflow: hidden; padding-bottom: 0;">
-                <div class="white-rose-top" style="margin-top: -2px; padding: 0;">
-                    <img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top" style="width: 100%; height: auto; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+<div class="card" style="opacity: 1 !important; display: block !important; position: relative; overflow: hidden; padding-bottom: 0;">
+    <div class="white-rose-top" style="margin-top: -2px; padding: 0;">
+        <img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top" style="width: 100%; height: auto; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+    </div>
+
+    <div style="padding: 10px 20px 20px 20px; text-align: center;">
+        <div style="font-size: 1.8rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
+            <i class="far fa-calendar-alt"></i>
+        </div>
+        <h3 style="font-family: 'Great Vibes', 'Playfair Display', cursive, serif; font-size: 2.2rem; color: var(--blue-ocean); margin: 0 0 5px 0;">Date & Time</h3>
+        
+        <!-- TANGGAL TEKS (UBAH KE TAHUN DEPAN/2027) -->
+        <p style="font-size: 1rem; font-weight: 600; color: #2b3a4a; margin-bottom: 4px;">Wednesday, December 8th, 2027</p>
+        <p style="font-size: 0.85rem; color: #555; font-style: italic; margin-top: 0;">Ceremony begins at 7:30 - 9:00 AM</p>
+
+        <div id="countdown-box" style="margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px dashed rgba(88, 111, 131, 0.3);">
+            <p class="serif-title" style="margin-bottom: 0.8rem; font-size: 0.95rem; color: #4a5a6a;">Counting Down To Our Big Day</p>
+            
+            <div class="countdown-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px;">
+                <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                    <div class="num" id="days" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
+                    <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Hari</div>
                 </div>
-
-                <div style="padding: 10px 20px 20px 20px; text-align: center;">
-                    <div style="font-size: 1.8rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
-                        <i class="far fa-calendar-alt"></i>
-                    </div>
-                    <h3 style="font-family: 'Great Vibes', 'Playfair Display', cursive, serif; font-size: 2.2rem; color: var(--blue-ocean); margin: 0 0 5px 0;">Date & Time</h3>
-                    <p style="font-size: 1rem; font-weight: 600; color: #2b3a4a; margin-bottom: 4px;">Monday, December 8th, 2025</p>
-                    <p style="font-size: 0.85rem; color: #555; font-style: italic; margin-top: 0;">Ceremony begins at 7:30 - 9:00 AM</p>
-
-                    <div id="countdown" style="margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px dashed rgba(88, 111, 131, 0.3);">
-                        <p class="serif-title" style="margin-bottom: 0.8rem; font-size: 0.95rem; color: #4a5a6a;">Counting Down To Our Big Day</p>
-                        
-                        <div class="countdown-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px;">
-                            <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
-                                <div class="num" id="days" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
-                                <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Hari</div>
-                            </div>
-                            <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
-                                <div class="num" id="hours" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
-                                <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Jam</div>
-                            </div>
-                            <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
-                                <div class="num" id="minutes" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
-                                <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Menit</div>
-                            </div>
-                            <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
-                                <div class="num" id="seconds" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
-                                <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Detik</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                    <div class="num" id="hours" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
+                    <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Jam</div>
                 </div>
-
-                <div class="white-rose-bottom" style="margin-bottom: -2px; padding: 0;">
-                    <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom" style="width: 100%; height: auto; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+                <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                    <div class="num" id="minutes" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
+                    <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Menit</div>
+                </div>
+                <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                    <div class="num" id="seconds" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
+                    <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Detik</div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="white-rose-bottom" style="margin-bottom: -2px; padding: 0;">
+        <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom" style="width: 100%; height: auto; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+    </div>
+</div>
+
+              
 
             <!-- KARTU DRESS CODE -->
             <div class="card fade-in" style="position: relative; overflow: hidden; padding-bottom: 20px;">
@@ -1204,8 +1235,8 @@ body {
 
                 <div style="padding: 15px 20px 0 20px; text-align: center;">
                     <h3 style="font-family: 'Great Vibes', 'Playfair Display', cursive, serif; font-size: 2.2rem; color: var(--blue-ocean); margin: 5px 0;">Dress Code</h3>
-                    <p style="font-size: 1rem; font-weight: 600; color: #2b3a4a; margin-bottom: 4px;">Traditional Formal Attire</p>
-                    <p style="font-size: 0.85rem; color: #555; font-style: italic; margin-top: 0; line-height: 1.4;">Surakarta/Solo Style or Earth Tone Suits & Dresses</p>
+                    <p style="font-size: 1rem; font-weight: 600; color: #2b3a4a; margin-bottom: 4px;"></p>
+                    <p style="font-size: 0.85rem; color: #555; font-style: italic; margin-top: 0; line-height: 1.4;">To complement the theme of our reception, guests are kindly requested to dress in formal attire (Suits & Dresses).</p>
                 </div>
 
                 <img src="{{ asset('images/dresscode.png') }}" alt="Dress Code Illustration" style="width: 100%; height: auto; display: block; mix-blend-mode: multiply; filter: contrast(110%);">
@@ -1252,283 +1283,261 @@ body {
     </section>
 
     <section class="rsvp" id="rsvp">
-        <div class="container">
-            <h2 class="fade-in">Join Our Day</h2>
-            <div class="card fade-in">
-                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
-                <div id="rsvpAlert" class="alert"></div>
+    <div class="container">
+        <h2 class="fade-in">Join Our Day</h2>
+        <div class="card fade-in">
+            <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
+            <div id="rsvpAlert" class="alert"></div>
+            
+            <form id="weddingRsvp">
+                <input type="hidden" id="guestId" name="guest_id" value="{{ $guest->id ?? 1 }}">
                 
-                <form id="weddingRsvp">
-                    <input type="hidden" id="guestId" value="1">
-                    
-                    <div class="form-group">
-                        <label for="guestEmail">Your Email *</label>
-                        <input type="email" id="guestEmail" class="form-control" required placeholder="your@email.com">
-                        <small style="color: var(--text-muted); font-size: 0.75rem; font-family: var(--font-serif);">We'll send you confirmation and wedding day reminder</small>
-                    </div>
+                <div class="form-group">
+                    <label for="guestEmail">Your Email *</label>
+                    <input type="email" id="guestEmail" name="email" class="form-control" required placeholder="your@email.com" value="{{ $guest->email ?? '' }}">
+                    <small style="color: var(--text-muted); font-size: 0.75rem; font-family: var(--font-serif);">We'll send you confirmation and wedding day reminder</small>
+                </div>
 
-                    <div class="form-group">
-                        <label>Will you be attending? *</label>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="attendingYes" name="attendance" value="attending" required>
-                                <label for="attendingYes">Yes, I'll be there!</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="attendingNo" name="attendance" value="not_attending">
-                                <label for="attendingNo">Sorry, I can't make it</label>
-                            </div>
+                <div class="form-group">
+                    <label>Will you be attending? *</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="attendingYes" name="attendance" value="attending" required>
+                            <label for="attendingYes">Yes, I'll be there!</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="attendingNo" name="attendance" value="not_attending">
+                            <label for="attendingNo">Sorry, I can't make it</label>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="totalGuests">Number of Guests (max: 5) *</label>
-                        <input type="number" id="totalGuests" class="form-control" min="1" max="5" value="1" required>
-                    </div>
-
-                    <button type="submit" class="btn" style="width: 100%; margin-top: 0.5rem;">
-                        Submit RSVP
-                    </button>
-                </form>
-                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="qr-section" id="qr">
-        <div class="container">
-            <h2 class="fade-in">Digital Invitation</h2>
-            <div class="qr-container fade-in">
-                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
-                <div class="ribbon-banner">🎀 Check-in Pass 🎀</div>
-                <div class="qr-code">
-                    {!! $qrCode !!}
                 </div>
-                <div>
-                    <p style="font-size: 0.85rem;">Your personal QR code for event check-in. Please present this code upon arrival.</p>
-                    <p style="margin-top: 0.5rem;"><strong>Guest Code:</strong> {{ $guest->code }}</p>
-                    <a href="/qr/{{ $guest->code }}" class="btn" style="margin-top: 1rem;">
-                        <i class="fas fa-expand"></i> View Full QR Code
-                    </a>
+
+                <div class="form-group">
+                    <label for="totalGuests">Number of Guests (max: 5) *</label>
+                    <input type="number" id="totalGuests" name="total_guests" class="form-control" min="1" max="5" value="1" required>
                 </div>
-                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
-            </div>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 0.5rem;">
+                    Submit RSVP
+                </button>
+            </form>
+            <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
         </div>
-    </section>
-
-    <section class="wishes" id="wishes">
-        <div class="container">
-            <h2 class="fade-in">Messages & Wishes</h2>
-            
-            <div class="card fade-in">
-                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
-                <div id="wishAlert" class="alert"></div>
-                <form id="wishForm">
-                    <div class="form-group">
-                        <label for="wishName">Your Name *</label>
-                        <input type="text" id="wishName" class="form-control" value="{{ $guest->name }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="wishMessage">Your Message *</label>
-                        <textarea id="wishMessage" class="form-control" required placeholder="Share your well wishes for the couple"></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
-                </form>
-
-                <div class="wishes-list" id="wishesList">
-                    <div class="wish-item">
-                        <div class="wish-author">John Doe</div>
-                        <div class="wish-message">Congratulations on your wedding! Wishing you a lifetime of love and happiness.</div>
-                    </div>
-                    <div class="wish-item">
-                        <div class="wish-author">Jane Smith</div>
-                        <div class="wish-message">May your marriage be filled with all the right ingredients: love, humor, understanding, and patience.</div>
-                    </div>
-                </div>
-                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            
-            <h3>Fabian & Naifa</h3>
-            <p>Thank you for being part of our special day!</p>
-            
-            <ul class="footer-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#couples">Couples</a></li>
-                <li><a href="#about">Our Story</a></li>
-                <li><a href="#details">Details</a></li>
-                <li><a href="#gift">Gift</a></li>
-                <li><a href="#rsvp">RSVP</a></li>
-            </ul>
-
-            <div class="copyright">
-                <p>&copy; 2025 Fabian & Naifa Wedding. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <audio id="background-music" src="{{ asset('audio/lagunikahan.mpeg') }}" loop preload="auto"></audio>
-    <button id="play-pause-button" class="audio-control-btn" title="Kontrol Musik Latar">
-        <i class="fas fa-play"></i> 
-    </button>
-
-    <div class="bottom-nav">
-        <a href="#hero"><i class="fa-solid fa-house"></i></a>
-        <a href="#couples"><i class="fa-solid fa-user-group"></i></a>
-        <a href="#details"><i class="fa-solid fa-calendar-check"></i></a>
-        <a href="#gift"><i class="fa-solid fa-gift"></i></a>
-        <a href="#rsvp"><i class="fa-solid fa-clipboard-check"></i></a>
-        <a href="#qr"><i class="fa-solid fa-qrcode"></i></a>
-        <a href="#wishes"><i class="fa-solid fa-comment-dots"></i></a>
     </div>
+</section>
 
-    <div class="notification-overlay" id="notificationOverlay"></div>
-    <div class="wedding-notification" id="weddingNotification">
-        <div class="white-rose-top" style="height: 100px;"></div>
-        <div class="ribbon-banner">✨ Special Announcement ✨</div>
-        <h2 style="font-size: 2.3rem; margin-bottom: 0.5rem;">The Wedding Has Begun! 🎉</h2>
-        <p>Fabian & Naifa's special moment is starting now!</p>
-        <button class="btn" style="margin-top: 1rem;" onclick="closeNotification()">Celebrate With Us!</button>
-        <div class="white-rose-bottom" style="height: 100px;"></div>
+<section class="qr-section" id="qr">
+    <div class="container">
+        <h2 class="fade-in">Digital Invitation</h2>
+        <div class="qr-container fade-in">
+            <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
+            <div class="ribbon-banner">🎀 Check-in Pass 🎀</div>
+            <div class="qr-code">
+                {!! $qrCode !!}
+            </div>
+            <div>
+                <p style="font-size: 0.85rem;">Your personal QR code for event check-in. Please present this code upon arrival.</p>
+                <p style="margin-top: 0.5rem;"><strong>Guest Code:</strong> {{ $guest->code }}</p>
+                <a href="/qr/{{ $guest->code }}" class="btn" style="margin-top: 1rem;">
+                    <i class="fas fa-expand"></i> View Full QR Code
+                </a>
+            </div>
+            <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
+        </div>
     </div>
+</section>
 
-    <script>
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    
-    function copyToClipboard(text) {
-        navigator.clipboard.writeText(text).then(() => {
-            alert('Nomor rekening berhasil disalin: ' + text);
-        }).catch(err => {
-            console.error('Gagal menyalin: ', err);
-        });
-    }
+<section class="wishes" id="wishes">
+    <div class="container">
+        <h2 class="fade-in">Messages & Wishes</h2>
+        
+        <div class="card fade-in">
+            <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
+            <div id="wishAlert" class="alert"></div>
+            <form id="wishForm">
+                <div class="form-group">
+                    <label for="wishName">Your Name *</label>
+                    <input type="text" id="wishName" name="name" class="form-control" value="{{ $guest->name }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="wishMessage">Your Message *</label>
+                    <textarea id="wishMessage" name="message" class="form-control" required placeholder="Share your well wishes for the couple"></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+            </form>
 
-    window.addEventListener('scroll', function() {
-        const header = document.getElementById('header');
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+            <div class="wishes-list" id="wishesList">
+                <!-- 1. Ucapan Dinamis dari Database (Akan bertambah di atas saat dikirim) -->
+                @if(isset($wishes) && count($wishes) > 0)
+                    @foreach($wishes as $wish)
+                        <div class="wish-item">
+                            <div class="wish-author">{{ $wish->name }}</div>
+                            <div class="wish-message">{{ $wish->message }}</div>
+                        </div>
+                    @endforeach
+                @endif
+
+                <!-- 2. Ucapan Estetik Menetap (Fixed English Wishes) -->
+                <div class="wish-item">
+                    <div class="wish-author">Sarah & Alexander</div>
+                    <div class="wish-message">"Wishing you both a lifetime of unending love, warmth, and laughter. May your sweet union bring more joy than you can ever imagine! Congratulations, Fabian & Naifa!"</div>
+                </div>
+
+                <div class="wish-item">
+                    <div class="wish-author">David K.</div>
+                    <div class="wish-message">"So happy to celebrate this special day with you two! May your love story continue to inspire everyone around you. Best wishes on this wonderful journey!"</div>
+                </div>
+
+                <div class="wish-item">
+                    <div class="wish-author">Elena & Marcus</div>
+                    <div class="wish-message">"May the love you share today grow stronger as you grow old together. Cheers to a beautiful love story and a happily ever after!"</div>
+                </div>
+            </div>
+
+            <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <h3>Fabian & Naifa</h3>
+        <p>Thank you for being part of our special day!</p>
+        
+        <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#couples">Couples</a></li>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#details">Details</a></li>
+            <li><a href="#gift">Gift</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+
+        <div class="copyright">
+            <p>&copy; 2026 Fabian & Naifa Wedding. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<audio id="background-music" src="{{ asset('audio/a-thousand.mp3') }}" loop preload="auto"></audio>
+<button id="play-pause-button" class="audio-control-btn" title="Kontrol Musik Latar">
+    <i class="fas fa-play"></i> 
+</button>
+
+<div class="bottom-nav">
+    <a href="#hero"><i class="fa-solid fa-house"></i></a>
+    <a href="#couples"><i class="fa-solid fa-user-group"></i></a>
+    <a href="#details"><i class="fa-solid fa-calendar-check"></i></a>
+    <a href="#gift"><i class="fa-solid fa-gift"></i></a>
+    <a href="#rsvp"><i class="fa-solid fa-clipboard-check"></i></a>
+    <a href="#qr"><i class="fa-solid fa-qrcode"></i></a>
+    <a href="#wishes"><i class="fa-solid fa-comment-dots"></i></a>
+</div>
+
+<div class="notification-overlay" id="notificationOverlay"></div>
+<div class="wedding-notification" id="weddingNotification">
+    <div class="white-rose-top" style="height: 100px;"></div>
+    <div class="ribbon-banner">✨ Special Announcement ✨</div>
+    <h2 style="font-size: 2.3rem; margin-bottom: 0.5rem;">The Wedding Has Begun! 🎉</h2>
+    <p>Fabian & Naifa's special moment is starting now!</p>
+    <button class="btn" style="margin-top: 1rem;" onclick="closeNotification()">Celebrate With Us!</button>
+    <div class="white-rose-bottom" style="height: 100px;"></div>
+</div>
+
+<script>
+const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+const csrfToken = csrfMeta ? csrfMeta.getAttribute('content') : '';
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Nomor rekening berhasil disalin: ' + text);
+    }).catch(err => {
+        console.error('Gagal menyalin: ', err);
     });
+}
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const fadeInOnScroll = function() {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        };
-        
-        fadeInOnScroll();
-        window.addEventListener('scroll', fadeInOnScroll);
+function openInvitation() {
+    const cover = document.getElementById('welcome-cover');
+    if(cover) cover.classList.add('cover-hidden');
 
-        const mobileMenu = document.getElementById('mobileMenu');
-        mobileMenu.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    const audio = document.getElementById('background-music'); 
+    if (audio) {
+        audio.play().catch(e => console.log(e));
+    }
+    document.body.style.overflow = 'auto';
+}
+
+function closeNotification() {
+    document.getElementById('notificationOverlay').classList.remove('show');
+    document.getElementById('weddingNotification').classList.remove('show');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. Fade In Animation
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeInOnScroll = function() {
+        fadeElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            if (elementTop < window.innerHeight - 150) {
+                element.classList.add('visible');
+            }
         });
+    };
+    fadeInOnScroll();
+    window.addEventListener('scroll', fadeInOnScroll);
 
-        // Audio
-        const audio = document.getElementById('background-music');
-        const playPauseButton = document.getElementById('play-pause-button');
-        
+    // 2. Audio Control
+    const audio = document.getElementById('background-music');
+    const playPauseButton = document.getElementById('play-pause-button');
+    if (audio && playPauseButton) {
         audio.volume = 0.4;
-        function togglePlayPause() {
+        playPauseButton.addEventListener('click', function() {
             if (audio.paused) {
-                audio.play()
-                    .then(() => {
-                        playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
-                    })
-                    .catch(error => {
-                        console.log('Playback error:', error);
-                    });
+                audio.play().then(() => {
+                    playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+                });
             } else {
                 audio.pause();
                 playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
             }
-        }
-        playPauseButton.addEventListener('click', togglePlayPause);
-        
-        document.body.addEventListener('click', function attemptPlayOnce() {
-            if (audio.paused) {
-                audio.play()
-                    .then(() => {
-                        playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
-                    })
-                    .catch(e => console.log("Play error:", e));
-            }
-            document.body.removeEventListener('click', attemptPlayOnce);
         });
+    }
 
-        // Countdown Timer
-        let notificationShown = false;
-        function updateCountdown() {
-            const weddingDate = new Date('2025-12-08T07:30:00').getTime();
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
+    // 3. Countdown Timer Single Clean Script
+    const targetDate = new Date("2026-12-08T07:30:00").getTime();
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+        
+        if (distance > 0) {
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
-            if (distance > 0) {
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                document.getElementById('days').textContent = days;
-                document.getElementById('hours').textContent = hours;
-                document.getElementById('minutes').textContent = minutes;
-                document.getElementById('seconds').textContent = seconds;
-            } else {
-                document.getElementById('countdown').innerHTML = '<p style="font-weight: 600; color: var(--blue-dark);">The Wedding Day is Here! 🎉</p>';
-                
-                if (!notificationShown) {
-                    showWeddingNotification();
-                    notificationShown = true;
-                }
-            }
+            if (document.getElementById('days')) document.getElementById('days').textContent = days;
+            if (document.getElementById('hours')) document.getElementById('hours').textContent = hours;
+            if (document.getElementById('minutes')) document.getElementById('minutes').textContent = minutes;
+            if (document.getElementById('seconds')) document.getElementById('seconds').textContent = seconds;
+        } else {
+            const cdBox = document.getElementById('countdown');
+            if(cdBox) cdBox.innerHTML = '<p style="font-weight: 600;">The Wedding Day is Here! 🎉</p>';
         }
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
-        function showWeddingNotification() {
-            const hasRSVP = localStorage.getItem('hasRSVP') === 'true';
-            if (!hasRSVP) return;
-            
-            const overlay = document.getElementById('notificationOverlay');
-            const notification = document.getElementById('weddingNotification');
-            
-            overlay.classList.add('show');
-            notification.classList.add('show');
-            
-            if ('Notification' in window && Notification.permission === 'granted') {
-                new Notification('🎉 Wedding Started!', {
-                    body: 'Fabian & Naifa\'s wedding ceremony has begun!',
-                    icon: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=200',
-                    tag: 'wedding-notification'
-                });
-            }
-            
-            if (!audio.paused) {
-                audio.volume = 0.6;
-            }
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // RSVP Form
-        document.getElementById('weddingRsvp').addEventListener('submit', async function(e) {
+    // 4. Submit RSVP Form
+    const rsvpForm = document.getElementById('weddingRsvp');
+    if (rsvpForm) {
+        rsvpForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const guestId = document.getElementById('guestId').value;
             const email = document.getElementById('guestEmail').value;
             const attendance = document.querySelector('input[name="attendance"]:checked');
             const totalGuests = document.getElementById('totalGuests').value;
+            const alertBox = document.getElementById('rsvpAlert');
             
             if (!attendance) {
                 alert('Please select attendance option');
@@ -1551,41 +1560,34 @@ body {
                 });
                 const data = await response.json();
                 
-                const alertBox = document.getElementById('rsvpAlert');
                 if (data.success) {
-                    if (attendance.value === 'attending') {
-                        localStorage.setItem('hasRSVP', 'true');
-                        if ('Notification' in window && Notification.permission === 'default') {
-                            Notification.requestPermission();
-                        }
-                    }
-                    
                     alertBox.className = 'alert alert-success';
                     alertBox.textContent = 'RSVP submitted successfully!';
                     alertBox.style.display = 'block';
-                    alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 } else {
                     alertBox.className = 'alert alert-error';
                     alertBox.textContent = 'Failed to submit RSVP.';
                     alertBox.style.display = 'block';
                 }
-
                 setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
             } catch (error) {
                 console.error('Error:', error);
-                const alertBox = document.getElementById('rsvpAlert');
                 alertBox.className = 'alert alert-error';
                 alertBox.textContent = 'An error occurred.';
                 alertBox.style.display = 'block';
                 setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
             }
         });
+    }
 
-        // Wish Form
-        document.getElementById('wishForm').addEventListener('submit', async function(e) {
+    // 5. Submit Wish Form
+    const wishForm = document.getElementById('wishForm');
+    if (wishForm) {
+        wishForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const name = document.getElementById('wishName').value;
             const message = document.getElementById('wishMessage').value;
+            const alertBox = document.getElementById('wishAlert');
 
             try {
                 const response = await fetch('/wishes', {
@@ -1608,110 +1610,24 @@ body {
                     `;
                     wishesList.prepend(newWish);
                     
-                    document.getElementById('wishForm').reset();
+                    document.getElementById('wishMessage').value = '';
                     
-                    const alertBox = document.getElementById('wishAlert');
                     alertBox.className = 'alert alert-success';
-                    alertBox.textContent = data.message;
+                    alertBox.textContent = data.message || 'Wish sent successfully!';
                     alertBox.style.display = 'block';
-
-                    setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
                 } else {
-                    const alertBox = document.getElementById('wishAlert');
                     alertBox.className = 'alert alert-error';
                     alertBox.textContent = 'Failed to submit wish.';
                     alertBox.style.display = 'block';
-                    setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
                 }
+                setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
             } catch (error) {
                 console.error('Error:', error);
                 alert('An error occurred.');
             }
         });
-    });
-
-    function closeNotification() {
-        document.getElementById('notificationOverlay').classList.remove('show');
-        document.getElementById('weddingNotification').classList.remove('show');
     }
-    </script>
-
-    <script>
-function openInvitation() {
-    // Sembunyikan cover dengan animasi mulus ke atas
-    const cover = document.getElementById('welcome-cover');
-    cover.classList.add('cover-hidden');
-
-    // Memutar musik otomatis saat tombol diklik (Opsional)
-    const audio = document.getElementById('myAudio'); 
-    if (audio) {
-        audio.play();
-    }
-
-    // Mengaktifkan scroll pada body
-    document.body.style.overflow = 'auto';
-}
-
-// Kunci scroll halaman saat cover masih terbuka
-document.addEventListener("DOMContentLoaded", function() {
-    document.body.style.overflow = 'hidden';
 });
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Tentukan tanggal & waktu acara (Format: YYYY-MM-DDTHH:mm:ss)
-    const targetDate = new Date("2026-12-08T07:30:00").getTime();
-
-    const timer = setInterval(function() {
-        const now = new Date().getTime();
-        const difference = targetDate - now;
-
-        if (difference < 0) {
-            clearInterval(timer);
-            document.getElementById("days").innerText = "0";
-            document.getElementById("hours").innerText = "0";
-            document.getElementById("minutes").innerText = "0";
-            document.getElementById("seconds").innerText = "0";
-            return;
-        }
-
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-        document.getElementById("days").innerText = days;
-        document.getElementById("hours").innerText = hours;
-        document.getElementById("minutes").innerText = minutes;
-        document.getElementById("seconds").innerText = seconds;
-    }, 1000);
-});
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const targetDate = new Date("2025-12-08T07:30:00").getTime();
-
-        function updateTimer() {
-            const now = new Date().getTime();
-            const difference = targetDate - now;
-
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                if (document.getElementById("days")) document.getElementById("days").innerText = days;
-                if (document.getElementById("hours")) document.getElementById("hours").innerText = hours;
-                if (document.getElementById("minutes")) document.getElementById("minutes").innerText = minutes;
-                if (document.getElementById("seconds")) document.getElementById("seconds").innerText = seconds;
-            }
-        }
-
-        updateTimer();
-        setInterval(updateTimer, 1000);
-    });
 </script>
 </body>
 </html>

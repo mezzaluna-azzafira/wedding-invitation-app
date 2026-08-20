@@ -21,8 +21,11 @@ Route::get('/', function () {
         'code' => 'GUEST'
     ];
     $qrCode = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='.$guest->code.'" alt="QR Code">';
+    
+    // Ambil data ucapan dari database
+    $wishes = DB::table('wishes')->where('is_approved', 1)->latest()->get();
 
-    return view('invitation', compact('guest', 'qrCode'));
+    return view('invitation', compact('guest', 'qrCode', 'wishes'));
 })->name('home');
 
 // Memproses Form Input Nama -> Simpan ke Database -> Redirect
@@ -49,10 +52,23 @@ Route::post('/guest-login', function (Request $request) {
 
 // Tampilan Undangan Berdasarkan KODE TAMU Personal
 Route::get('/invitation/{code}', function ($code) {
-    $guest = DB::table('guests')->where('code', $code)->firstOrFail();
-    $qrCode = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='.$guest->code.'" alt="QR Code">';
+    $guest = DB::table('guests')->where('code', $code)->first();
 
-    return view('invitation', compact('guest', 'qrCode'));
+    // Jika tamu tidak ditemukan, gunakan data fallback
+    if (!$guest) {
+        $guest = (object) [
+            'id'   => 0,
+            'name' => 'Tamu Undangan',
+            'code' => $code
+        ];
+    }
+
+    $qrCode = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='.$guest->code.'" alt="QR Code">';
+    
+    // Ambil data ucapan dari database
+    $wishes = DB::table('wishes')->where('is_approved', 1)->latest()->get();
+
+    return view('invitation', compact('guest', 'qrCode', 'wishes'));
 })->name('guest.show');
 
 // Halaman Fullscreen QR Code
@@ -62,7 +78,7 @@ Route::get('/qr/{code}', function ($code) {
                 <div style="text-align:center; background:#fff; padding:30px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
                     <h2>Kode Tamu: '.$code.'</h2>
                     <div style="margin:20px 0;">'.$qrCode.'</div>
-                    <a href="/" style="text-decoration:none; color:#007bff; font-weight:bold;">&larr; Kembali ke Undangan</a>
+                    <a href="/" style="text-decoration:none; color:#b76e79; font-weight:bold;">&larr; Kembali ke Undangan</a>
                 </div>
             </div>';
 })->name('guest.qr');
@@ -71,13 +87,17 @@ Route::get('/qr/{code}', function ($code) {
 // 2. ENDPOINT FORM (RSVP & UCAPAN)
 // ==========================================
 
-// Simpan RSVP dari Form JavaScript
 // Simpan / Update RSVP (Mencegah Duplikasi)
 Route::post('/rsvp', function (Request $request) {
-    $guestId = $request->input('guest_id') ?? DB::table('guests')->value('id');
+    $guestId = $request->input('guest_id');
+    
+    // Jika guest_id bernilai 0 atau null, ambil ID tamu pertama di database sebagai cadangan
+    if (!$guestId) {
+        $guestId = DB::table('guests')->value('id') ?? 1;
+    }
+
     $attendance = $request->input('attendance', 'attending');
 
-    // Menggunakan updateOrInsert agar jika guest_id sudah ada, datanya cuma di-update
     DB::table('rsvps')->updateOrInsert(
         ['guest_id' => $guestId],
         [
