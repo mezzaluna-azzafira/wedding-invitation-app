@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Fabian & Naifa | Wedding Celebration</title>
+    <title>Rexand & Rebeeca | Wedding Celebration</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -224,16 +224,18 @@
             transform: translateY(0);
         }
 
-        .arch-photo-container {
-            width: 200px;
-            height: 280px;
-            margin: 1rem auto;
-            border-radius: 100px;
-            border: 4px solid #FFFFFF;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(34, 55, 74, 0.18);
-            position: relative;
-        }
+        /* KODE BARU (AESTHETIC ARCH) */
+.arch-photo-container {
+    width: 210px;
+    height: 310px;
+    margin: 1.5rem auto;
+    border-radius: 120px 120px 0 0; /* Lengkungan halus bagian atas saja */
+    border: 4px solid #FFFFFF;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(34, 55, 74, 0.12); /* Shadow lebih halus & modern */
+    position: relative;
+    background-color: #f7f3eb;
+}
 
         .arch-photo-container img {
             width: 100%;
@@ -961,23 +963,23 @@ body {
     <div class="cover-card">
         <!-- Foto Sampul Atas -->
         <div class="cover-image">
-            <img src="/images/foto-cover.jpg" alt="Fabian & Naifa">
+            <img src="/images/sothisislove.png" alt="Rexand & Rebeeca">
         </div>
 
         <!-- Konten Undangan -->
         <div class="cover-content">
-            <p class="sub-title">PERNIKAHAN</p>
-            <h1 class="couple-name">Fabian & Naifa</h1>
+            <p class="sub-title">WEDDING</p>
+            <h1 class="couple-name">Rexand & Rebeeca</h1>
             
             <div class="guest-box">
                 <p class="dear-text">Dear.</p>
-                <h3 class="guest-name">{{ $guest_name ?? 'Nama Tamu' }}</h3>
-                <p class="invitation-text">Kami mengundang Anda untuk menghadiri acara Pernikahan kami.</p>
+                <h3 class="guest-name">{{ $guest_name ?? 'Guest Name' }}</h3>
+                <p class="invitation-text">We invite you to attend our wedding.</p>
             </div>
 
             <!-- Tombol Buka Undangan -->
             <button type="button" class="btn-open-invitation" onclick="openInvitation()">
-                <i class="fas fa-envelope-open"></i> Buka Undangan
+                <i class="fas fa-envelope-open"></i> Open Invitation
             </button>
         </div>
     </div>
@@ -994,7 +996,7 @@ body {
 
     <header id="header">
         <div class="nav-container">
-            <div class="logo">Fabian & Naifa</div>
+            <div class="logo">Rexand & Rebeeca</div>
             <div class="mobile-menu" id="mobileMenu">
                 <i class="fas fa-bars"></i>
             </div>
@@ -1011,14 +1013,18 @@ body {
                     
                     <div class="ribbon-banner">🎀 The Wedding Of 🎀</div>
                     
-                    <h1>Fabian & Naifa</h1>
+                    <!-- KODE BARU -->
+
+
+<h1 style="font-size: 2.9rem !important; white-space: nowrap;">Rexand & Rebeeca</h1>
                     
                     <div class="ornament-divider">❀ ── ❁ ── ❀</div>
                     
                     <div class="envelope-card">
                         <div class="envelope-badge"><i class="fas fa-envelope-open-text"></i> Special Invitation</div>
                         <p style="margin-bottom: 0.2rem; font-size: 0.8rem;">To Our Honored Guest:</p>
-                        <p class="guest-name">{{ $guest->name }}</p>
+<!-- KODE BARU -->
+<p class="guest-name">Honored Guest</p>
                     </div>
 
                     <p style="font-style: italic;">We request the pleasure of your company to celebrate our marriage.</p>
@@ -1028,7 +1034,7 @@ body {
                     </div>
 
                     <div class="arch-photo-container">
-                        <img src="{{ asset('images/FN.png') }}" alt="Fabian & Naifa">
+                        <img src="{{ asset('images/FN.png') }}" alt="Rexand & Rebeeca">
                     </div>
 
                     <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem;">
@@ -1054,13 +1060,13 @@ body {
                 <!-- Groom -->
                 <div style="margin: 1rem 0;">
                     <div class="arch-photo-container" style="width: 150px; height: 200px;">
-                        <img src="{{ asset('images/FN.png') }}" alt="Fabian Profile">
+                        <img src="{{ asset('images/mempelai_pria.png') }}" alt="Rexand Profile">
                     </div>
-                    <h3 style="font-size: 2.5rem; margin-top: 0.5rem;">Fabian Ahza</h3>
-                    <p style="margin-bottom: 0.3rem;"><strong>Putra dari:</strong></p>
-                    <p>Bpk. Fathurrahman & Ibu Sarah</p>
+                    <h3 style="font-size: 2.5rem; margin-top: 0.5rem;">Rexand Algara</h3>
+                    <p style="margin-bottom: 0.3rem;"><strong>The beloved son of:</strong></p>
+                    <p>Mr. Venzo Lorenz & Mrs. Vierza Amora</p>
                     <a href="https://instagram.com" target="_blank" class="btn btn-outline" style="padding: 6px 16px; font-size: 0.75rem; margin-top: 0.3rem;">
-                        <i class="fab fa-instagram"></i> @fabianahza
+                        <i class="fab fa-instagram"></i> @rexandalgara
                     </a>
                 </div>
 
@@ -1069,13 +1075,13 @@ body {
                 <!-- Bride -->
                 <div style="margin: 1rem 0;">
                     <div class="arch-photo-container" style="width: 150px; height: 200px;">
-                        <img src="{{ asset('images/FN.png') }}" alt="Naifa Profile">
+                        <img src="{{ asset('images/mempelai_wanita.png') }}" alt="Rebeeca Profile">
                     </div>
-                    <h3 style="font-size: 2.5rem; margin-top: 0.5rem;">Naifa Az-Zahra</h3>
-                    <p style="margin-bottom: 0.3rem;"><strong>Putri dari:</strong></p>
-                    <p>Bpk. Ahmad Subagyo & Ibu Maryam</p>
+                    <h3 style="font-size: 2.5rem; margin-top: 0.5rem;">Rebeeca Graceelyn</h3>
+                    <p style="margin-bottom: 0.3rem;"><strong>The beloved daughter of:</strong></p>
+                    <p>Mr. Zicco Alexander & Mrs. Renata Morea</p>
                     <a href="https://instagram.com" target="_blank" class="btn btn-outline" style="padding: 6px 16px; font-size: 0.75rem; margin-top: 0.3rem;">
-                        <i class="fab fa-instagram"></i> @naifaazzahra
+                        <i class="fab fa-instagram"></i> @rebeecagraceelyn
                     </a>
                 </div>
 
@@ -1093,22 +1099,22 @@ body {
 
     <div class="gallery-grid">
         <div class="gallery-item">
-            <img src="/images/foto1.jpg" alt="Gallery Photo 1">
+            <img src="/images/m1.jpeg" alt="Gallery Photo 1">
         </div>
         <div class="gallery-item">
-            <img src="/images/foto2.jpg" alt="Gallery Photo 2">
+            <img src="/images/m2.jpeg" alt="Gallery Photo 2">
         </div>
         <div class="gallery-item">
-            <img src="/images/foto3.jpg" alt="Gallery Photo 3">
+            <img src="/images/m3.png" alt="Gallery Photo 3">
         </div>
         <div class="gallery-item">
-            <img src="/images/foto4.jpg" alt="Gallery Photo 4">
+            <img src="/images/m4.png" alt="Gallery Photo 4">
         </div>
         <div class="gallery-item">
-            <img src="/images/foto5.jpg" alt="Gallery Photo 5">
+            <img src="/images/m5.png" alt="Gallery Photo 5">
         </div>
         <div class="gallery-item">
-            <img src="/images/foto6.jpg" alt="Gallery Photo 6">
+            <img src="/images/m6..jpeg" alt="Gallery Photo 6">
         </div>
     </div>
 </section>
@@ -1125,7 +1131,7 @@ body {
                 <p>As we stand on the brink of forever, we want you to be a part of our next chapter. Join us as we exchange vows and promise each other a lifetime of adventures.</p>
                 
                 <div class="arch-photo-container" style="width: 180px; height: 240px;">
-                    <img src="{{ asset('images/FN.png') }}" alt="Fabian & Naifa">
+                    <img src="{{ asset('images/sothisislove.png') }}" alt="Rexand & Rebeeca">
                 </div>
 
                 <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
@@ -1200,23 +1206,24 @@ body {
             <p class="serif-title" style="margin-bottom: 0.8rem; font-size: 0.95rem; color: #4a5a6a;">Counting Down To Our Big Day</p>
             
             <div class="countdown-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px;">
-                <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
-                    <div class="num" id="days" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
-                    <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Hari</div>
-                </div>
-                <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
-                    <div class="num" id="hours" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
-                    <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Jam</div>
-                </div>
-                <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
-                    <div class="num" id="minutes" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
-                    <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Menit</div>
-                </div>
-                <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
-                    <div class="num" id="seconds" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
-                    <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Detik</div>
-                </div>
-            </div>
+    <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+        <div class="num" id="days" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
+        <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Days</div>
+    </div>
+    <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+        <div class="num" id="hours" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
+        <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Hours</div>
+    </div>
+    <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+        <div class="num" id="minutes" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
+        <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Mins</div>
+    </div>
+    <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+        <div class="num" id="seconds" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
+        <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Secs</div>
+    </div>
+</div>
+            
         </div>
     </div>
 
@@ -1255,15 +1262,15 @@ body {
             <div class="card fade-in">
                 <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
                 <div class="ribbon-banner">🎁 Love & Blessings 🎁</div>
-                <p>Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika Anda ingin memberi hadiah, Anda dapat mengirimkannya melalui:</p>
+                <p>Your presence and blessings are the greatest gift of all. However, if you wish to honor us with a gift, you may send it via:</p>
 
                 <!-- Rekening 1 -->
                 <div class="bank-card">
                     <p style="margin-bottom: 0.2rem; font-weight: 600; color: var(--blue-ocean);">BANK BCA</p>
                     <div class="bank-number" id="bankNum1">1234 5678 90</div>
-                    <p style="font-size: 0.8rem; margin-bottom: 0.5rem;">a.n Fabian Ahza</p>
+                    <p style="font-size: 0.8rem; margin-bottom: 0.5rem;">a.n Rexand Algara</p>
                     <button class="btn btn-outline" style="padding: 6px 18px; font-size: 0.75rem;" onclick="copyToClipboard('1234567890')">
-                        <i class="fas fa-copy"></i> Salin Rekening
+                        <i class="fas fa-copy"></i> Copy Account Number
                     </button>
                 </div>
 
@@ -1271,9 +1278,9 @@ body {
                 <div class="bank-card">
                     <p style="margin-bottom: 0.2rem; font-weight: 600; color: var(--blue-ocean);">BANK MANDIRI</p>
                     <div class="bank-number" id="bankNum2">0987 6543 21</div>
-                    <p style="font-size: 0.8rem; margin-bottom: 0.5rem;">a.n Naifa Az-Zahra</p>
+                    <p style="font-size: 0.8rem; margin-bottom: 0.5rem;">a.n Rebeeca Graceelyn</p>
                     <button class="btn btn-outline" style="padding: 6px 18px; font-size: 0.75rem;" onclick="copyToClipboard('0987654321')">
-                        <i class="fas fa-copy"></i> Salin Rekening
+                        <i class="fas fa-copy"></i> Copy Account Number
                     </button>
                 </div>
 
@@ -1380,7 +1387,7 @@ body {
                 <!-- 2. Ucapan Estetik Menetap (Fixed English Wishes) -->
                 <div class="wish-item">
                     <div class="wish-author">Sarah & Alexander</div>
-                    <div class="wish-message">"Wishing you both a lifetime of unending love, warmth, and laughter. May your sweet union bring more joy than you can ever imagine! Congratulations, Fabian & Naifa!"</div>
+                    <div class="wish-message">"Wishing you both a lifetime of unending love, warmth, and laughter. May your sweet union bring more joy than you can ever imagine! Congratulations, Rexand & Rebeeca!"</div>
                 </div>
 
                 <div class="wish-item">
@@ -1400,7 +1407,7 @@ body {
 </section>
 <footer>
     <div class="container">
-        <h3>Fabian & Naifa</h3>
+        <h3>Rexand & Rebeeca</h3>
         <p>Thank you for being part of our special day!</p>
         
         <ul class="footer-links">
@@ -1413,7 +1420,7 @@ body {
         </ul>
 
         <div class="copyright">
-            <p>&copy; 2026 Fabian & Naifa Wedding. All rights reserved.</p>
+            <p>&copy; 2026 Rexand & Rebeeca Wedding. All rights reserved.</p>
         </div>
     </div>
 </footer>
@@ -1438,7 +1445,7 @@ body {
     <div class="white-rose-top" style="height: 100px;"></div>
     <div class="ribbon-banner">✨ Special Announcement ✨</div>
     <h2 style="font-size: 2.3rem; margin-bottom: 0.5rem;">The Wedding Has Begun! 🎉</h2>
-    <p>Fabian & Naifa's special moment is starting now!</p>
+    <p>Rexand & Rebeeca's special moment is starting now!</p>
     <button class="btn" style="margin-top: 1rem;" onclick="closeNotification()">Celebrate With Us!</button>
     <div class="white-rose-bottom" style="height: 100px;"></div>
 </div>
