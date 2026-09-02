@@ -1425,9 +1425,9 @@ body {
     </div>
 </footer>
 
-<audio id="background-music" src="{{ asset('audio/a-thousand.mp3') }}" loop preload="auto"></audio>
+<audio id="background-music" src="{{ asset('audio/a-thousand-years.mp3') }}" loop preload="auto"></audio>
 <button id="play-pause-button" class="audio-control-btn" title="Kontrol Musik Latar">
-    <i class="fas fa-play"></i> 
+    <i id="music-icon" class="fas fa-play"></i> 
 </button>
 
 <div class="bottom-nav">
@@ -1635,6 +1635,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+        const audio = document.getElementById("background-music");
+        const playBtn = document.getElementById("play-pause-button");
+        const icon = document.getElementById("music-icon");
+
+        playBtn.addEventListener("click", function () {
+            if (audio.paused) {
+                audio.play();
+                icon.classList.remove("fa-play");
+                icon.classList.add("fa-pause");
+            } else {
+                audio.pause();
+                icon.classList.remove("fa-pause");
+                icon.classList.add("fa-play");
+            }
+        });
+    });
 </script>
 </body>
 </html>
