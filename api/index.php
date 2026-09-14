@@ -1,13 +1,9 @@
 <?php
 
-// 1. Sembunyikan error dari layar pengunjung (Keamanan)
-ini_set('display_errors', '0');
-error_reporting(E_ALL);
-
-// 2. Alirkan log error langsung ke Dashboard Vercel
+// Konfigurasi log channel ke stderr untuk Vercel
 putenv('LOG_CHANNEL=stderr');
 $_ENV['LOG_CHANNEL'] = 'stderr';
-$_SERVER['LOG_SERVER'] = 'stderr';
+$_SERVER['LOG_CHANNEL'] = 'stderr';
 
-// 3. Panggil file index Laravel utama
+// Panggil aplikasi Laravel
 require __DIR__ . '/../public/index.php';
