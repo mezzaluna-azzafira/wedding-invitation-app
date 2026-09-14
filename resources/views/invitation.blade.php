@@ -671,7 +671,7 @@ footer {
 }
 
 body {
-    background-image: url('/images/bg-wedding.png') !important;
+    background-image: url("{{ asset('images/bg-wedding.png') }}") !important;
     background-size: cover !important;
     background-position: center !important;
     background-attachment: fixed !important;
@@ -767,7 +767,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/images/foto-cover.jpg'); /* Samakan dengan foto utama */
+    background-image: url("{{ asset('images/foto-cover.jpg') }}"); /* Samakan dengan foto utama */
     background-size: cover;
     background-position: center;
     filter: blur(15px) brightness(0.5);
@@ -963,7 +963,7 @@ body {
     <div class="cover-card">
         <!-- Foto Sampul Atas -->
         <div class="cover-image">
-            <img src="/images/sothisislove.png" alt="Rexand & Rebeeca">
+            <img src="{{ asset('images/sothisislove.png') }}" alt="Rexand & Rebeeca">
         </div>
 
         <!-- Konten Undangan -->
@@ -1099,22 +1099,22 @@ body {
 
     <div class="gallery-grid">
         <div class="gallery-item">
-            <img src="/images/m1.jpeg" alt="Gallery Photo 1">
+            <img src="{{ asset('images/m1.jpeg') }}" alt="Gallery Photo 1">
         </div>
         <div class="gallery-item">
-            <img src="/images/m2.jpeg" alt="Gallery Photo 2">
+            <img src="{{ asset('images/m2.jpeg') }}" alt="Gallery Photo 2">
         </div>
         <div class="gallery-item">
-            <img src="/images/m3.png" alt="Gallery Photo 3">
+            <img src="{{ asset('images/m3.png') }}" alt="Gallery Photo 3">
         </div>
         <div class="gallery-item">
-            <img src="/images/m4.png" alt="Gallery Photo 4">
+            <img src="{{ asset('images/m4.png') }}" alt="Gallery Photo 4">
         </div>
         <div class="gallery-item">
-            <img src="/images/m5.png" alt="Gallery Photo 5">
+            <img src="{{ asset('images/m5.png') }}" alt="Gallery Photo 5">
         </div>
         <div class="gallery-item">
-            <img src="/images/m6..jpeg" alt="Gallery Photo 6">
+            <img src="{{ asset('images/m6.jpeg') }}" alt="Gallery Photo 6">
         </div>
     </div>
 </section>

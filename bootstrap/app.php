@@ -11,9 +11,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-    // Matikan maintenance check di Vercel agar tidak memicu Manager::createDriver()
-    $middleware->remove(\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance::class);
-})
-    ->withExceptions(function (Exceptions $exceptions): void {
+        //
+    })
+    ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
