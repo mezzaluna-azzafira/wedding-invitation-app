@@ -1024,7 +1024,7 @@ body {
                         <div class="envelope-badge"><i class="fas fa-envelope-open-text"></i> Special Invitation</div>
                         <p style="margin-bottom: 0.2rem; font-size: 0.8rem;">To Our Honored Guest:</p>
 <!-- KODE BARU -->
-<p class="guest-name">Honored Guest</p>
+<p class="guest-name">{{ $guest->name ?? $guest_name ?? 'Honored Guest' }}</p>
                     </div>
 
                     <p style="font-style: italic;">We request the pleasure of your company to celebrate our marriage.</p>
@@ -1038,7 +1038,7 @@ body {
                     </div>
 
                     <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.5rem;">
-                        <a href="#about" class="btn"><i class="fa-regular fa-envelope-open"></i> Open Invitation</a>
+                        <button type="button" class="btn" onclick="openInvitation()"><i class="fa-regular fa-envelope-open"></i> Open Invitation</button>
                         <a href="#rsvp" class="btn btn-outline">Send RSVP</a>
                     </div>
                     
@@ -1511,8 +1511,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 3. Countdown Timer Single Clean Script
-    const targetDate = new Date("2026-12-08T07:30:00").getTime();
-    function updateCountdown() {
+    const targetDate = new Date("2027-12-08T07:30:00").getTime();
         const now = new Date().getTime();
         const distance = targetDate - now;
         
