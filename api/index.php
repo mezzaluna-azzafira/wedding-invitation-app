@@ -1,9 +1,9 @@
 <?php
 
-// Forward permintaan Vercel ke public/index.php bawaan Laravel
-define('LARAVEL_START', microtime(true));
+// 1. Panggil autoloader dari Composer (Ini yang tadi hilang!)
+require __DIR__ . '/../vendor/autoload.php';
 
-// Mengarahkan folder storage dan cache ke /tmp (karena Vercel read-only)
+// 2. Jalankan aplikasi Laravel
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
