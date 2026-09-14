@@ -14,7 +14,6 @@
     
     <style>
         :root {
-            /* Palette Coastal Blue, Cream & Sand Gradient */
             --bg-cream: #F7F3EB;
             --bg-sand: #EAE1D0;
             --bg-seafoam: #C0D6D8;
@@ -50,11 +49,15 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            background: linear-gradient(135deg, #fdfbf7 0%, #e8f0ed 50%, #f7f3ec 100%);
-            background-attachment: fixed;
+            background-image: url("{{ asset('images/bg-wedding.png') }}") !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-attachment: fixed !important;
+            background-repeat: no-repeat !important;
             line-height: 1.7;
             overflow-x: hidden;
             position: relative;
+            padding-bottom: 0 !important;
         }
 
         .bg-animation-container {
@@ -224,18 +227,17 @@
             transform: translateY(0);
         }
 
-        /* KODE BARU (AESTHETIC ARCH) */
-.arch-photo-container {
-    width: 210px;
-    height: 310px;
-    margin: 1.5rem auto;
-    border-radius: 120px 120px 0 0; /* Lengkungan halus bagian atas saja */
-    border: 4px solid #FFFFFF;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(34, 55, 74, 0.12); /* Shadow lebih halus & modern */
-    position: relative;
-    background-color: #f7f3eb;
-}
+        .arch-photo-container {
+            width: 210px;
+            height: 310px;
+            margin: 1.5rem auto;
+            border-radius: 120px 120px 0 0;
+            border: 4px solid #FFFFFF;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(34, 55, 74, 0.12);
+            position: relative;
+            background-color: #f7f3eb;
+        }
 
         .arch-photo-container img {
             width: 100%;
@@ -300,7 +302,6 @@
             color: #FFFFFF !important;
         }
 
-        /* Fitur Bank Card */
         .bank-card {
             background: #ffffff;
             border: 1px solid rgba(88, 111, 131, 0.2);
@@ -318,7 +319,6 @@
             margin: 0.5rem 0;
         }
 
-        /* Form Inputs */
         .form-group {
             margin-bottom: 1.2rem;
             text-align: left;
@@ -438,6 +438,19 @@
             border: 1.5px solid rgba(255, 255, 255, 0.85);
             text-align: center;
             position: relative;
+            padding-top: 0 !important;
+            overflow: hidden !important;
+        }
+
+        .qr-container .white-rose-top {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+
+        .qr-container .white-rose-top img {
+            margin-top: -2px !important;
+            border-top-left-radius: 20px !important;
+            border-top-right-radius: 20px !important;
         }
 
         .qr-code {
@@ -454,7 +467,13 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        .qr-code img, .qr-code svg { width: 100%; height: 100%; }
+        .qr-code img, 
+        .qr-code svg {
+            max-width: 100% !important;
+            height: auto !important;
+            display: block;
+            margin: 0 auto;
+        }
 
         .wishes-list {
             margin-top: 1.5rem;
@@ -490,13 +509,22 @@
             color: #FFFFFF;
             padding: 3.5rem 0 6rem;
             text-align: center;
-            border-radius: 35px 35px 0 0;
+            border-radius: 28px 28px 0 0 !important;
             position: relative;
             overflow: hidden;
+            margin-bottom: 0 !important;
+            padding-bottom: 90px !important;
+            width: 100% !important;
         }
 
         footer h3 { color: #FFFFFF; }
         footer p, .copyright p { color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; }
+
+        footer .white-rose-top,
+        footer .white-rose-bottom,
+        footer img[src*="mawar"] {
+            display: none !important;
+        }
 
         .footer-links {
             list-style: none;
@@ -617,373 +645,210 @@
             opacity: 0.75;
         }
 
-        /* Beri jarak aman di paling bawah halaman agar tidak tertutup nav */
-body {
-    padding-bottom: 120px !important;
-}
+        /* STYLING GALERI */
+        .gallery-section {
+            width: 100%;
+            max-width: 480px;
+            margin: 30px auto;
+            padding: 20px 15px;
+            box-sizing: border-box;
+        }
 
-/* Pastikan footer memiliki ruang lebih di bawah */
-footer {
-    padding-bottom: 80px !important;
-}
+        .gallery-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-/* Kunci ukuran QR Code agar tidak meluap keluar kartu */
-.qr-code img, 
-.qr-code svg {
-    max-width: 100% !important;
-    height: auto !important;
-    display: block;
-    margin: 0 auto;
-}
+        .gallery-title h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #2b3a4a;
+            margin: 0;
+        }
 
-/* Khusus merapatkan mawar di bagian Digital Pass / QR */
-.qr-container {
-    padding-top: 0 !important;
-    overflow: hidden !important;
-}
+        .gallery-title p {
+            font-size: 13px;
+            color: #7a8b9e;
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
 
-.qr-container .white-rose-top {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-}
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
 
-.qr-container .white-rose-top img {
-    margin-top: -2px !important; /* Mendorong mawar mepet sampai paling atas */
-    border-top-left-radius: 20px !important;
-    border-top-right-radius: 20px !important;
-}
-/* Menghilangkan gambar mawar khusus di area footer */
-footer .white-rose-top,
-footer .white-rose-bottom,
-footer img[src*="mawar"] {
-    display: none !important;
-}
-/* Buat footer full memenuhi bagian paling bawah halaman */
-body {
-    padding-bottom: 0 !important;
-}
+        .gallery-item {
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            background-color: #f8f9fa;
+            border: 3px solid #ffffff;
+        }
 
-footer {
-    border-radius: 28px 28px 0 0 !important; /* Melengkung hanya di atas, bawahnya lurus */
-    margin-bottom: 0 !important;
-    padding-bottom: 90px !important; /* Ruang ekstra di dalam footer agar tidak tertutup nav */
-    width: 100% !important;
-}
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
 
-body {
-    background-image: url("{{ asset('images/bg-wedding.png') }}") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-attachment: fixed !important;
-    background-repeat: no-repeat !important;
-}
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
 
-/* ==========================================
-   STYLING KHUSUS GALERI FOTO (SAFE & NEAT)
-   ========================================== */
-.gallery-section {
-    width: 100%;
-    max-width: 480px; /* Menyesuaikan frame kartu agar presisi */
-    margin: 30px auto;
-    padding: 20px 15px;
-    box-sizing: border-box;
-}
+        /* COVER OVERLAY STYLING */
+        #welcome-cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a1a;
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+        }
 
-.gallery-title {
-    text-align: center;
-    margin-bottom: 20px;
-}
+        .cover-bg-blur {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("{{ asset('images/foto-cover.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            filter: blur(15px) brightness(0.5);
+            transform: scale(1.1);
+        }
 
-.gallery-title h2 {
-    font-family: 'Playfair Display', serif, cursive; /* Menyesuaikan font nikahan */
-    font-size: 24px;
-    color: #2b3a4a;
-    margin: 0;
-}
+        .cover-card {
+            position: relative;
+            width: 90%;
+            max-width: 420px;
+            height: 85vh;
+            max-height: 680px;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            z-index: 2;
+        }
 
-.gallery-title p {
-    font-size: 13px;
-    color: #7a8b9e;
-    margin-top: 4px;
-    letter-spacing: 1px;
-}
+        .cover-image {
+            width: 100%;
+            height: 45%;
+            overflow: hidden;
+        }
 
-/* Grid Rapi 2 Kolom */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 Kolom sejajar simetris */
-    gap: 12px; /* Jarak antar foto */
-}
+        .cover-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-/* Frame Tiap Foto */
-.gallery-item {
-    position: relative;
-    width: 100%;
-    padding-top: 100%; /* Membuat bingkai foto otomatis Kotak / Square (1:1) */
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    background-color: #f8f9fa;
-    border: 3px solid #ffffff; /* Efek bingkai putih rapi */
-}
+        .cover-content {
+            padding: 25px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+            background: #fafafa;
+        }
 
-/* Gambar di dalam frame */
-.gallery-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Foto otomatis terpotong rapi tanpa melar */
-    transition: transform 0.4s ease;
-}
+        .sub-title {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #666;
+            margin: 0;
+        }
 
-/* Efek Zoom Halus Saat Disentuh / Hover */
-.gallery-item:hover img {
-    transform: scale(1.06);
-}
+        .couple-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: #1a2b3c;
+            margin: 5px 0 15px 0;
+        }
 
-/* ==========================================
-   COVER / WELCOME OVERLAY STYLING
-   ========================================== */
-#welcome-cover {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 99999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1a1a1a;
-    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
-}
+        .dear-text {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 2px;
+        }
 
-/* Background Blur di Luar Kartu */
-.cover-bg-blur {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("{{ asset('images/foto-cover.jpg') }}"); /* Samakan dengan foto utama */
-    background-size: cover;
-    background-position: center;
-    filter: blur(15px) brightness(0.5);
-    transform: scale(1.1); /* Mencegah pinggiran blur putih */
-}
+        .invitation-text {
+            font-size: 12px;
+            color: #777;
+            line-height: 1.4;
+            margin: 0 auto;
+            max-width: 80%;
+        }
 
-/* Kartu Tengah Mobile-Frame */
-.cover-card {
-    position: relative;
-    width: 90%;
-    max-width: 420px;
-    height: 85vh;
-    max-height: 680px;
-    background: #ffffff;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-    display: flex;
-    flex-direction: column;
-    z-index: 2;
-}
+        .btn-open-invitation {
+            background-color: #2b3a4a;
+            color: #ffffff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 15px auto 0 auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(43, 58, 74, 0.3);
+        }
 
-/* Foto bagian atas kartu */
-.cover-image {
-    width: 100%;
-    height: 45%;
-    overflow: hidden;
-}
+        .btn-open-invitation:hover {
+            background-color: #1a2530;
+            transform: translateY(-2px);
+        }
 
-.cover-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Isi Teks Kartu */
-.cover-content {
-    padding: 25px 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-    background: #fafafa;
-}
-
-.sub-title {
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: #666;
-    margin: 0;
-}
-
-.couple-name {
-    font-family: 'Playfair Display', serif, cursive;
-    font-size: 28px;
-    color: #1a2b3c;
-    margin: 5px 0 15px 0;
-}
-
-.dear-text {
-    font-size: 13px;
-    color: #555;
-    margin-bottom: 2px;
-}
-
-.guest-name {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1a2b3c;
-    margin: 0 0 8px 0;
-}
-
-.invitation-text {
-    font-size: 12px;
-    color: #777;
-    line-height: 1.4;
-    margin: 0 auto;
-    max-width: 80%;
-}
-
-/* Tombol Buka Undangan */
-.btn-open-invitation {
-    background-color: #2b3a4a;
-    color: #ffffff;
-    border: none;
-    padding: 12px 28px;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    margin: 15px auto 0 auto;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(43, 58, 74, 0.3);
-}
-
-.btn-open-invitation:hover {
-    background-color: #1a2530;
-    transform: translateY(-2px);
-}
-
-/* Class saat sampul dibuka (Menghilang ke atas) */
-.cover-hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Container Utama Date & Time */
-.date-time-card {
-    text-align: center;
-    padding: 20px 15px;
-}
-
-.calendar-icon {
-    font-size: 1.8rem;
-    color: #2b3a4a;
-    margin-bottom: 10px;
-}
-
-.date-title {
-    font-family: 'Great Vibes', 'Playfair Display', cursive, serif;
-    font-size: 2.2rem;
-    color: #2b3a4a;
-    margin: 0;
-}
-
-.date-subtitle {
-    font-size: 1rem;
-    color: #2b3a4a;
-    margin: 8px 0 4px 0;
-}
-
-.ceremony-text {
-    font-size: 0.85rem;
-    color: #666;
-    margin: 0 0 15px 0;
-}
-
-.dotted-line {
-    border: none;
-    border-top: 1px dashed #ccc;
-    margin: 20px auto;
-    width: 80%;
-}
-
-/* Grid 4 Kotak Sejajar */
-.countdown-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-top: 15px;
-}
-
-/* Tampilan Tiap Kotak Putih */
-.countdown-box {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 12px 5px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(0, 0, 0, 0.03);
-}
-
-.countdown-box .number {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #2b3a4a;
-    line-height: 1;
-}
-
-.countdown-box .label {
-    font-size: 0.75rem;
-    color: #666;
-    margin-top: 6px;
-    font-style: italic;
-}
-
+        .cover-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
 
     <!-- OVERLAY COVER UTAMA -->
-<div id="welcome-cover">
-    <!-- Background foto besar yang di-blur -->
-    <div class="cover-bg-blur"></div>
-
-    <!-- Kartu Utama di Tengah -->
-    <div class="cover-card">
-        <!-- Foto Sampul Atas -->
-        <div class="cover-image">
-            <img src="{{ asset('images/sothisislove.png') }}" alt="Rexand & Rebeeca">
-        </div>
-
-        <!-- Konten Undangan -->
-        <div class="cover-content">
-            <p class="sub-title">WEDDING</p>
-            <h1 class="couple-name">Rexand & Rebeeca</h1>
-            
-            <div class="guest-box">
-                <p class="dear-text">Dear.</p>
-                <h3 class="guest-name">{{ $guest_name ?? 'Guest Name' }}</h3>
-                <p class="invitation-text">We invite you to attend our wedding.</p>
+    <div id="welcome-cover">
+        <div class="cover-bg-blur"></div>
+        <div class="cover-card">
+            <div class="cover-image">
+                <img src="{{ asset('images/sothisislove.png') }}" alt="Rexand & Rebeeca">
             </div>
 
-            <!-- Tombol Buka Undangan -->
-            <button type="button" class="btn-open-invitation" onclick="openInvitation()">
-                <i class="fas fa-envelope-open"></i> Open Invitation
-            </button>
+            <div class="cover-content">
+                <p class="sub-title">WEDDING</p>
+                <h1 class="couple-name">Rexand & Rebeeca</h1>
+                
+                <div class="guest-box">
+                    <p class="dear-text">Dear.</p>
+                    <h3 class="guest-name">{{ $guest->name ?? $guest_name ?? 'Honored Guest' }}</h3>
+                    <p class="invitation-text">We invite you to attend our wedding.</p>
+                </div>
+
+                <button type="button" class="btn-open-invitation" onclick="openInvitation()">
+                    <i class="fas fa-envelope-open"></i> Open Invitation
+                </button>
+            </div>
         </div>
     </div>
-</div>
 
     <div class="bg-animation-container">
         <div class="petal"></div>
@@ -1013,18 +878,14 @@ body {
                     
                     <div class="ribbon-banner">🎀 The Wedding Of 🎀</div>
                     
-                    <!-- KODE BARU -->
-
-
-<h1 style="font-size: 2.9rem !important; white-space: nowrap;">Rexand & Rebeeca</h1>
+                    <h1 style="font-size: 2.9rem !important; white-space: nowrap;">Rexand & Rebeeca</h1>
                     
                     <div class="ornament-divider">❀ ── ❁ ── ❀</div>
                     
                     <div class="envelope-card">
                         <div class="envelope-badge"><i class="fas fa-envelope-open-text"></i> Special Invitation</div>
                         <p style="margin-bottom: 0.2rem; font-size: 0.8rem;">To Our Honored Guest:</p>
-<!-- KODE BARU -->
-<p class="guest-name">{{ $guest->name ?? $guest_name ?? 'Honored Guest' }}</p>
+                        <p class="guest-name">{{ $guest->name ?? $guest_name ?? 'Honored Guest' }}</p>
                     </div>
 
                     <p style="font-style: italic;">We request the pleasure of your company to celebrate our marriage.</p>
@@ -1090,34 +951,34 @@ body {
         </div>
     </section>
 
-    <!-- KODE GALERI FOTO (ISOLATED) -->
-<section class="gallery-section">
-    <div class="gallery-title">
-        <h2>Our Moments</h2>
-        <p>Memories of Us</p>
-    </div>
+    <!-- GALERI FOTO -->
+    <section class="gallery-section">
+        <div class="gallery-title">
+            <h2>Our Moments</h2>
+            <p>Memories of Us</p>
+        </div>
 
-    <div class="gallery-grid">
-        <div class="gallery-item">
-            <img src="{{ asset('images/m1.jpeg') }}" alt="Gallery Photo 1">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="{{ asset('images/m1.jpeg') }}" alt="Gallery Photo 1">
+            </div>
+            <div class="gallery-item">
+                <img src="{{ asset('images/m2.jpeg') }}" alt="Gallery Photo 2">
+            </div>
+            <div class="gallery-item">
+                <img src="{{ asset('images/m3.png') }}" alt="Gallery Photo 3">
+            </div>
+            <div class="gallery-item">
+                <img src="{{ asset('images/m4.png') }}" alt="Gallery Photo 4">
+            </div>
+            <div class="gallery-item">
+                <img src="{{ asset('images/m5.png') }}" alt="Gallery Photo 5">
+            </div>
+            <div class="gallery-item">
+                <img src="{{ asset('images/m6.jpeg') }}" alt="Gallery Photo 6">
+            </div>
         </div>
-        <div class="gallery-item">
-            <img src="{{ asset('images/m2.jpeg') }}" alt="Gallery Photo 2">
-        </div>
-        <div class="gallery-item">
-            <img src="{{ asset('images/m3.png') }}" alt="Gallery Photo 3">
-        </div>
-        <div class="gallery-item">
-            <img src="{{ asset('images/m4.png') }}" alt="Gallery Photo 4">
-        </div>
-        <div class="gallery-item">
-            <img src="{{ asset('images/m5.png') }}" alt="Gallery Photo 5">
-        </div>
-        <div class="gallery-item">
-            <img src="{{ asset('images/m6.jpeg') }}" alt="Gallery Photo 6">
-        </div>
-    </div>
-</section>
+    </section>
 
     <section class="about" id="about">
         <div class="container">
@@ -1140,122 +1001,110 @@ body {
     </section>
 
     <section class="details" id="details">
-    <div class="container">
-        <h2 class="fade-in">Wedding Details</h2>
-        
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-
-            <!-- KARTU LOKASI / LOCATION -->
-<div class="card" style="position: relative; overflow: hidden; text-align: center;">
-    
-    <!-- Mawar Atas -->
-    <div class="white-rose-top" style="margin-top: -2px; padding: 0;">
-        <img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top" style="width: 100%; height: auto; border-top-left-radius: 20px; border-top-right-radius: 20px;">
-    </div>
-
-    <div style="padding: 10px 20px 20px 20px;">
-        <!-- Icon Location -->
-        <div style="font-size: 1.8rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
-            <i class="fas fa-map-marker-alt"></i>
-        </div>
-
-        <!-- Judul -->
-        <h3 style="font-family: 'Great Vibes', 'Playfair Display', cursive, serif; font-size: 2.2rem; color: var(--blue-ocean); margin: 0 0 10px 0;">Location</h3>
-
-        <!-- Gambar Lokasi/Gedung -->
-        <div style="margin: 15px auto; max-width: 90%; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-            <img src="{{ asset('images/hotel-mulia.webp') }}" alt="Grand Ballroom Hotel Mulia" style="width: 100%; height: auto; display: block; object-fit: cover;">
-        </div>
-
-        <!-- Nama Tempat & Alamat -->
-        <h4 style="font-size: 1.1rem; font-weight: 700; color: #2b3a4a; margin: 10px 0 5px 0;">Grand Ballroom Hotel Mulia Senayan</h4>
-        <p style="font-size: 0.85rem; color: #555; line-height: 1.5; margin: 0 0 20px 0; padding: 0 10px;">
-            Jl. Asia Afrika, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10270
-        </p>
-
-        <!-- Button Open in Google Maps -->
-        <a href="https://maps.app.goo.gl/jCy4SFAwyPjkoLpm7" target="_blank" rel="noopener noreferrer" 
-           style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: #3b597b; color: #ffffff; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 600; box-shadow: 0 4px 12px rgba(59, 89, 123, 0.3); transition: all 0.3s ease;">
-            <i class="fas fa-map-marked-alt"></i>
-            <span>Open in Google Maps</span>
-        </a>
-    </div>
-
-    <!-- Mawar Bawah -->
-    <div class="white-rose-bottom" style="margin-bottom: -2px; padding: 0;">
-        <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom" style="width: 100%; height: auto; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
-    </div>
-</div>
-            <!-- KARTU DATE & TIME -->
-<div class="card" style="opacity: 1 !important; display: block !important; position: relative; overflow: hidden; padding-bottom: 0;">
-    <div class="white-rose-top" style="margin-top: -2px; padding: 0;">
-        <img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top" style="width: 100%; height: auto; border-top-left-radius: 20px; border-top-right-radius: 20px;">
-    </div>
-
-    <div style="padding: 10px 20px 20px 20px; text-align: center;">
-        <div style="font-size: 1.8rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
-            <i class="far fa-calendar-alt"></i>
-        </div>
-        <h3 style="font-family: 'Great Vibes', 'Playfair Display', cursive, serif; font-size: 2.2rem; color: var(--blue-ocean); margin: 0 0 5px 0;">Date & Time</h3>
-        
-        <!-- TANGGAL TEKS (UBAH KE TAHUN DEPAN/2027) -->
-        <p style="font-size: 1rem; font-weight: 600; color: #2b3a4a; margin-bottom: 4px;">Wednesday, December 8th, 2027</p>
-        <p style="font-size: 0.85rem; color: #555; font-style: italic; margin-top: 0;">Ceremony begins at 7:30 - 9:00 AM</p>
-
-        <div id="countdown-box" style="margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px dashed rgba(88, 111, 131, 0.3);">
-            <p class="serif-title" style="margin-bottom: 0.8rem; font-size: 0.95rem; color: #4a5a6a;">Counting Down To Our Big Day</p>
+        <div class="container">
+            <h2 class="fade-in">Wedding Details</h2>
             
-            <div class="countdown-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px;">
-    <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
-        <div class="num" id="days" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
-        <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Days</div>
-    </div>
-    <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
-        <div class="num" id="hours" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
-        <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Hours</div>
-    </div>
-    <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
-        <div class="num" id="minutes" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
-        <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Mins</div>
-    </div>
-    <div class="count-box" style="background: #ffffff; border-radius: 12px; padding: 12px 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
-        <div class="num" id="seconds" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #2b3a4a;">0</div>
-        <div class="label" style="font-size: 0.75rem; color: #666; margin-top: 4px; font-style: italic;">Secs</div>
-    </div>
-</div>
-            
-        </div>
-    </div>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <!-- KARTU LOKASI / LOCATION -->
+                <div class="card" style="position: relative; overflow: hidden; text-align: center;">
+                    <div class="white-rose-top" style="margin-top: -2px; padding: 0;">
+                        <img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top" style="width: 100%; height: auto; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                    </div>
 
-    <div class="white-rose-bottom" style="margin-bottom: -2px; padding: 0;">
-        <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom" style="width: 100%; height: auto; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
-    </div>
-</div>
+                    <div style="padding: 10px 20px 20px 20px;">
+                        <div style="font-size: 1.8rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
 
-              
+                        <h3 style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--blue-ocean); margin: 0 0 10px 0;">Location</h3>
 
-            <!-- KARTU DRESS CODE -->
-            <div class="card fade-in" style="position: relative; overflow: hidden; padding-bottom: 20px;">
-                <div class="white-rose-top" style="margin-top: -2px; padding: 0;">
-                    <img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top" style="width: 100%; height: auto; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                        <div style="margin: 15px auto; max-width: 90%; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                            <img src="{{ asset('images/hotel-mulia.webp') }}" alt="Grand Ballroom Hotel Mulia" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                        </div>
+
+                        <h4 style="font-size: 1.1rem; font-weight: 700; color: #2b3a4a; margin: 10px 0 5px 0;">Grand Ballroom Hotel Mulia Senayan</h4>
+                        <p style="font-size: 0.85rem; color: #555; line-height: 1.5; margin: 0 0 20px 0; padding: 0 10px;">
+                            Jl. Asia Afrika, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10270
+                        </p>
+
+                        <a href="https://maps.app.goo.gl/jCy4SFAwyPjkoLpm7" target="_blank" rel="noopener noreferrer" 
+                           style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background-color: #3b597b; color: #ffffff; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-size: 0.9rem; font-weight: 600; box-shadow: 0 4px 12px rgba(59, 89, 123, 0.3); transition: all 0.3s ease;">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Open in Google Maps</span>
+                        </a>
+                    </div>
+
+                    <div class="white-rose-bottom" style="margin-bottom: -2px; padding: 0;">
+                        <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom" style="width: 100%; height: auto; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+                    </div>
                 </div>
 
-                <div style="padding: 15px 20px 0 20px; text-align: center;">
-                    <h3 style="font-family: 'Great Vibes', 'Playfair Display', cursive, serif; font-size: 2.2rem; color: var(--blue-ocean); margin: 5px 0;">Dress Code</h3>
-                    <p style="font-size: 1rem; font-weight: 600; color: #2b3a4a; margin-bottom: 4px;"></p>
-                    <p style="font-size: 0.85rem; color: #555; font-style: italic; margin-top: 0; line-height: 1.4;">To complement the theme of our reception, guests are kindly requested to dress in formal attire (Suits & Dresses).</p>
+                <!-- KARTU DATE & TIME -->
+                <div class="card" style="opacity: 1 !important; display: block !important; position: relative; overflow: hidden; padding-bottom: 0;">
+                    <div class="white-rose-top" style="margin-top: -2px; padding: 0;">
+                        <img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top" style="width: 100%; height: auto; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                    </div>
+
+                    <div style="padding: 10px 20px 20px 20px; text-align: center;">
+                        <div style="font-size: 1.8rem; color: var(--blue-ocean); margin-bottom: 0.3rem;">
+                            <i class="far fa-calendar-alt"></i>
+                        </div>
+                        <h3 style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--blue-ocean); margin: 0 0 5px 0;">Date & Time</h3>
+                        
+                        <p style="font-size: 1rem; font-weight: 600; color: #2b3a4a; margin-bottom: 4px;">Wednesday, December 8th, 2027</p>
+                        <p style="font-size: 0.85rem; color: #555; font-style: italic; margin-top: 0;">Ceremony begins at 7:30 - 9:00 AM</p>
+
+                        <div id="countdown-box" style="margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px dashed rgba(88, 111, 131, 0.3);">
+                            <p class="serif-title" style="margin-bottom: 0.8rem; font-size: 0.95rem; color: #4a5a6a;">Counting Down To Our Big Day</p>
+                            
+                            <div class="countdown-grid">
+                                <div class="count-box">
+                                    <div class="num" id="days">0</div>
+                                    <div class="label">Days</div>
+                                </div>
+                                <div class="count-box">
+                                    <div class="num" id="hours">0</div>
+                                    <div class="label">Hours</div>
+                                </div>
+                                <div class="count-box">
+                                    <div class="num" id="minutes">0</div>
+                                    <div class="label">Mins</div>
+                                </div>
+                                <div class="count-box">
+                                    <div class="num" id="seconds">0</div>
+                                    <div class="label">Secs</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="white-rose-bottom" style="margin-bottom: -2px; padding: 0;">
+                        <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom" style="width: 100%; height: auto; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+                    </div>
                 </div>
 
-                <img src="{{ asset('images/dresscode.png') }}" alt="Dress Code Illustration" style="width: 100%; height: auto; display: block; mix-blend-mode: multiply; filter: contrast(110%);">
+                <!-- KARTU DRESS CODE -->
+                <div class="card fade-in" style="position: relative; overflow: hidden; padding-bottom: 20px;">
+                    <div class="white-rose-top" style="margin-top: -2px; padding: 0;">
+                        <img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top" style="width: 100%; height: auto; border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                    </div>
 
-                <div class="white-rose-bottom" style="margin-bottom: -2px; padding: 0;">
-                    <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom" style="width: 100%; height: auto; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+                    <div style="padding: 15px 20px 0 20px; text-align: center;">
+                        <h3 style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--blue-ocean); margin: 5px 0;">Dress Code</h3>
+                        <p style="font-size: 0.85rem; color: #555; font-style: italic; margin-top: 0; line-height: 1.4;">To complement the theme of our reception, guests are kindly requested to dress in formal attire (Suits & Dresses).</p>
+                    </div>
+
+                    <img src="{{ asset('images/dresscode.png') }}" alt="Dress Code Illustration" style="width: 100%; height: auto; display: block; mix-blend-mode: multiply; filter: contrast(110%);">
+
+                    <div class="white-rose-bottom" style="margin-bottom: -2px; padding: 0;">
+                        <img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom" style="width: 100%; height: auto; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+                    </div>
                 </div>
             </div>
-        </div> <!-- Penutup untuk flex container -->
-    </div> <!-- Penutup container -->
-</section>
-    <!-- SECTION DIGITAL GIFT BARU -->
+        </div>
+    </section>
+
+    <!-- SECTION DIGITAL GIFT -->
     <section class="gift" id="gift">
         <div class="container">
             <h2 class="fade-in">Wedding Gift</h2>
@@ -1264,20 +1113,18 @@ body {
                 <div class="ribbon-banner">🎁 Love & Blessings 🎁</div>
                 <p>Your presence and blessings are the greatest gift of all. However, if you wish to honor us with a gift, you may send it via:</p>
 
-                <!-- Rekening 1 -->
                 <div class="bank-card">
                     <p style="margin-bottom: 0.2rem; font-weight: 600; color: var(--blue-ocean);">BANK BCA</p>
-                    <div class="bank-number" id="bankNum1">1234 5678 90</div>
+                    <div class="bank-number">1234 5678 90</div>
                     <p style="font-size: 0.8rem; margin-bottom: 0.5rem;">a.n Rexand Algara</p>
                     <button class="btn btn-outline" style="padding: 6px 18px; font-size: 0.75rem;" onclick="copyToClipboard('1234567890')">
                         <i class="fas fa-copy"></i> Copy Account Number
                     </button>
                 </div>
 
-                <!-- Rekening 2 -->
                 <div class="bank-card">
                     <p style="margin-bottom: 0.2rem; font-weight: 600; color: var(--blue-ocean);">BANK MANDIRI</p>
-                    <div class="bank-number" id="bankNum2">0987 6543 21</div>
+                    <div class="bank-number">0987 6543 21</div>
                     <p style="font-size: 0.8rem; margin-bottom: 0.5rem;">a.n Rebeeca Graceelyn</p>
                     <button class="btn btn-outline" style="padding: 6px 18px; font-size: 0.75rem;" onclick="copyToClipboard('0987654321')">
                         <i class="fas fa-copy"></i> Copy Account Number
@@ -1290,388 +1137,358 @@ body {
     </section>
 
     <section class="rsvp" id="rsvp">
-    <div class="container">
-        <h2 class="fade-in">Join Our Day</h2>
-        <div class="card fade-in">
-            <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
-            <div id="rsvpAlert" class="alert"></div>
-            
-            <form id="weddingRsvp">
-                <input type="hidden" id="guestId" name="guest_id" value="{{ $guest->id ?? 1 }}">
+        <div class="container">
+            <h2 class="fade-in">Join Our Day</h2>
+            <div class="card fade-in">
+                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
+                <div id="rsvpAlert" class="alert"></div>
                 
-                <div class="form-group">
-                    <label for="guestEmail">Your Email *</label>
-                    <input type="email" id="guestEmail" name="email" class="form-control" required placeholder="your@email.com" value="{{ $guest->email ?? '' }}">
-                    <small style="color: var(--text-muted); font-size: 0.75rem; font-family: var(--font-serif);">We'll send you confirmation and wedding day reminder</small>
-                </div>
+                <form id="weddingRsvp">
+                    <input type="hidden" id="guestId" name="guest_id" value="{{ $guest->id ?? 1 }}">
+                    
+                    <div class="form-group">
+                        <label for="guestEmail">Your Email *</label>
+                        <input type="email" id="guestEmail" name="email" class="form-control" required placeholder="your@email.com" value="{{ $guest->email ?? '' }}">
+                        <small style="color: var(--text-muted); font-size: 0.75rem; font-family: var(--font-serif);">We'll send you confirmation and wedding day reminder</small>
+                    </div>
 
-                <div class="form-group">
-                    <label>Will you be attending? *</label>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="attendingYes" name="attendance" value="attending" required>
-                            <label for="attendingYes">Yes, I'll be there!</label>
+                    <div class="form-group">
+                        <label>Will you be attending? *</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="attendingYes" name="attendance" value="attending" required>
+                                <label for="attendingYes">Yes, I'll be there!</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="attendingNo" name="attendance" value="not_attending">
+                                <label for="attendingNo">Sorry, I can't make it</label>
+                            </div>
                         </div>
-                        <div class="radio-option">
-                            <input type="radio" id="attendingNo" name="attendance" value="not_attending">
-                            <label for="attendingNo">Sorry, I can't make it</label>
-                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="totalGuests">Number of Guests (max: 5) *</label>
+                        <input type="number" id="totalGuests" name="total_guests" class="form-control" min="1" max="5" value="1" required>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 0.5rem;">
+                        Submit RSVP
+                    </button>
+                </form>
+                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="qr-section" id="qr">
+        <div class="container">
+            <h2 class="fade-in">Digital Invitation</h2>
+            <div class="qr-container fade-in">
+                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
+                <div class="ribbon-banner">🎀 Check-in Pass 🎀</div>
+                <div class="qr-code">
+                    {!! $qrCode ?? '' !!}
+                </div>
+                <div>
+                    <p style="font-size: 0.85rem;">Your personal QR code for event check-in. Please present this code upon arrival.</p>
+                    <p style="margin-top: 0.5rem;"><strong>Guest Code:</strong> {{ $guest->code ?? '-' }}</p>
+                    <a href="/qr/{{ $guest->code ?? '' }}" class="btn" style="margin-top: 1rem;">
+                        <i class="fas fa-expand"></i> View Full QR Code
+                    </a>
+                </div>
+                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="wishes" id="wishes">
+        <div class="container">
+            <h2 class="fade-in">Messages & Wishes</h2>
+            
+            <div class="card fade-in">
+                <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
+                <div id="wishAlert" class="alert"></div>
+                <form id="wishForm">
+                    <div class="form-group">
+                        <label for="wishName">Your Name *</label>
+                        <input type="text" id="wishName" name="name" class="form-control" value="{{ $guest->name ?? '' }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="wishMessage">Your Message *</label>
+                        <textarea id="wishMessage" name="message" class="form-control" required placeholder="Share your well wishes for the couple"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                </form>
+
+                <div class="wishes-list" id="wishesList">
+                    @if(isset($wishes) && count($wishes) > 0)
+                        @foreach($wishes as $wish)
+                            <div class="wish-item">
+                                <div class="wish-author">{{ $wish->name }}</div>
+                                <div class="wish-message">{{ $wish->message }}</div>
+                            </div>
+                        @endforeach
+                    @endif
+
+                    <div class="wish-item">
+                        <div class="wish-author">Sarah & Alexander</div>
+                        <div class="wish-message">"Wishing you both a lifetime of unending love, warmth, and laughter. May your sweet union bring more joy than you can ever imagine! Congratulations, Rexand & Rebeeca!"</div>
+                    </div>
+
+                    <div class="wish-item">
+                        <div class="wish-author">David K.</div>
+                        <div class="wish-message">"So happy to celebrate this special day with you two! May your love story continue to inspire everyone around you. Best wishes on this wonderful journey!"</div>
+                    </div>
+
+                    <div class="wish-item">
+                        <div class="wish-author">Elena & Marcus</div>
+                        <div class="wish-message">"May the love you share today grow stronger as you grow old together. Cheers to a beautiful love story and a happily ever after!"</div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="totalGuests">Number of Guests (max: 5) *</label>
-                    <input type="number" id="totalGuests" name="total_guests" class="form-control" min="1" max="5" value="1" required>
-                </div>
-
-                <button type="submit" class="btn" style="width: 100%; margin-top: 0.5rem;">
-                    Submit RSVP
-                </button>
-            </form>
-            <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
-        </div>
-    </div>
-</section>
-
-<section class="qr-section" id="qr">
-    <div class="container">
-        <h2 class="fade-in">Digital Invitation</h2>
-        <div class="qr-container fade-in">
-            <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
-            <div class="ribbon-banner">🎀 Check-in Pass 🎀</div>
-            <div class="qr-code">
-                {!! $qrCode !!}
+                <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
             </div>
-            <div>
-                <p style="font-size: 0.85rem;">Your personal QR code for event check-in. Please present this code upon arrival.</p>
-                <p style="margin-top: 0.5rem;"><strong>Guest Code:</strong> {{ $guest->code }}</p>
-                <a href="/qr/{{ $guest->code }}" class="btn" style="margin-top: 1rem;">
-                    <i class="fas fa-expand"></i> View Full QR Code
-                </a>
-            </div>
-            <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="wishes" id="wishes">
-    <div class="container">
-        <h2 class="fade-in">Messages & Wishes</h2>
-        
-        <div class="card fade-in">
-            <div class="white-rose-top"><img src="{{ asset('images/mawar-putih-atas.png') }}" alt="Rose Top"></div>
-            <div id="wishAlert" class="alert"></div>
-            <form id="wishForm">
-                <div class="form-group">
-                    <label for="wishName">Your Name *</label>
-                    <input type="text" id="wishName" name="name" class="form-control" value="{{ $guest->name }}" required>
-                </div>
-                <div class="form-group">
-                    <label for="wishMessage">Your Message *</label>
-                    <textarea id="wishMessage" name="message" class="form-control" required placeholder="Share your well wishes for the couple"></textarea>
-                </div>
-                <button type="submit" class="btn" style="width: 100%;">Send Message</button>
-            </form>
-
-            <div class="wishes-list" id="wishesList">
-                <!-- 1. Ucapan Dinamis dari Database (Akan bertambah di atas saat dikirim) -->
-                @if(isset($wishes) && count($wishes) > 0)
-                    @foreach($wishes as $wish)
-                        <div class="wish-item">
-                            <div class="wish-author">{{ $wish->name }}</div>
-                            <div class="wish-message">{{ $wish->message }}</div>
-                        </div>
-                    @endforeach
-                @endif
-
-                <!-- 2. Ucapan Estetik Menetap (Fixed English Wishes) -->
-                <div class="wish-item">
-                    <div class="wish-author">Sarah & Alexander</div>
-                    <div class="wish-message">"Wishing you both a lifetime of unending love, warmth, and laughter. May your sweet union bring more joy than you can ever imagine! Congratulations, Rexand & Rebeeca!"</div>
-                </div>
-
-                <div class="wish-item">
-                    <div class="wish-author">David K.</div>
-                    <div class="wish-message">"So happy to celebrate this special day with you two! May your love story continue to inspire everyone around you. Best wishes on this wonderful journey!"</div>
-                </div>
-
-                <div class="wish-item">
-                    <div class="wish-author">Elena & Marcus</div>
-                    <div class="wish-message">"May the love you share today grow stronger as you grow old together. Cheers to a beautiful love story and a happily ever after!"</div>
-                </div>
-            </div>
-
-            <div class="white-rose-bottom"><img src="{{ asset('images/mawar-putih-bawah.png') }}" alt="Rose Bottom"></div>
-        </div>
-    </div>
-</section>
-<footer>
-    <div class="container">
-        <h3>Rexand & Rebeeca</h3>
-        <p>Thank you for being part of our special day!</p>
-        
-        <ul class="footer-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#couples">Couples</a></li>
-            <li><a href="#about">Our Story</a></li>
-            <li><a href="#details">Details</a></li>
-            <li><a href="#gift">Gift</a></li>
-            <li><a href="#rsvp">RSVP</a></li>
-        </ul>
-
-        <div class="copyright">
-            <p>&copy; 2026 Rexand & Rebeeca Wedding. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
-
-<audio id="background-music" src="{{ asset('audio/a-thousand-years.mp3') }}" loop preload="auto"></audio>
-<button id="play-pause-button" class="audio-control-btn" title="Kontrol Musik Latar">
-    <i id="music-icon" class="fas fa-play"></i> 
-</button>
-
-<div class="bottom-nav">
-    <a href="#hero"><i class="fa-solid fa-house"></i></a>
-    <a href="#couples"><i class="fa-solid fa-user-group"></i></a>
-    <a href="#details"><i class="fa-solid fa-calendar-check"></i></a>
-    <a href="#gift"><i class="fa-solid fa-gift"></i></a>
-    <a href="#rsvp"><i class="fa-solid fa-clipboard-check"></i></a>
-    <a href="#qr"><i class="fa-solid fa-qrcode"></i></a>
-    <a href="#wishes"><i class="fa-solid fa-comment-dots"></i></a>
-</div>
-
-<div class="notification-overlay" id="notificationOverlay"></div>
-<div class="wedding-notification" id="weddingNotification">
-    <div class="white-rose-top" style="height: 100px;"></div>
-    <div class="ribbon-banner">✨ Special Announcement ✨</div>
-    <h2 style="font-size: 2.3rem; margin-bottom: 0.5rem;">The Wedding Has Begun! 🎉</h2>
-    <p>Rexand & Rebeeca's special moment is starting now!</p>
-    <button class="btn" style="margin-top: 1rem;" onclick="closeNotification()">Celebrate With Us!</button>
-    <div class="white-rose-bottom" style="height: 100px;"></div>
-</div>
-
-<script>
-const csrfMeta = document.querySelector('meta[name="csrf-token"]');
-const csrfToken = csrfMeta ? csrfMeta.getAttribute('content') : '';
-
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        alert('Nomor rekening berhasil disalin: ' + text);
-    }).catch(err => {
-        console.error('Gagal menyalin: ', err);
-    });
-}
-
-function openInvitation() {
-    const cover = document.getElementById('welcome-cover');
-    if(cover) cover.classList.add('cover-hidden');
-
-    const audio = document.getElementById('background-music'); 
-    if (audio) {
-        audio.play().catch(e => console.log(e));
-    }
-    document.body.style.overflow = 'auto';
-}
-
-function closeNotification() {
-    document.getElementById('notificationOverlay').classList.remove('show');
-    document.getElementById('weddingNotification').classList.remove('show');
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // 1. Fade In Animation
-    const fadeElements = document.querySelectorAll('.fade-in');
-    const fadeInOnScroll = function() {
-        fadeElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            if (elementTop < window.innerHeight - 150) {
-                element.classList.add('visible');
-            }
-        });
-    };
-    fadeInOnScroll();
-    window.addEventListener('scroll', fadeInOnScroll);
-
-    // 2. Audio Control
-    const audio = document.getElementById('background-music');
-    const playPauseButton = document.getElementById('play-pause-button');
-    if (audio && playPauseButton) {
-        audio.volume = 0.4;
-        playPauseButton.addEventListener('click', function() {
-            if (audio.paused) {
-                audio.play().then(() => {
-                    playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
-                });
-            } else {
-                audio.pause();
-                playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
-            }
-        });
-    }
-
-    // 3. Countdown Timer Single Clean Script
-    const targetDate = new Date("2027-12-08T07:30:00").getTime();
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-        
-        if (distance > 0) {
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    <footer>
+        <div class="container">
+            <h3>Rexand & Rebeeca</h3>
+            <p>Thank you for being part of our special day!</p>
             
-            if (document.getElementById('days')) document.getElementById('days').textContent = days;
-            if (document.getElementById('hours')) document.getElementById('hours').textContent = hours;
-            if (document.getElementById('minutes')) document.getElementById('minutes').textContent = minutes;
-            if (document.getElementById('seconds')) document.getElementById('seconds').textContent = seconds;
-        } else {
-            const cdBox = document.getElementById('countdown');
-            if(cdBox) cdBox.innerHTML = '<p style="font-weight: 600;">The Wedding Day is Here! 🎉</p>';
-        }
+            <ul class="footer-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#couples">Couples</a></li>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#details">Details</a></li>
+                <li><a href="#gift">Gift</a></li>
+                <li><a href="#rsvp">RSVP</a></li>
+            </ul>
+
+            <div class="copyright">
+                <p>&copy; 2027 Rexand & Rebeeca Wedding. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <audio id="background-music" src="{{ asset('audio/a-thousand-years.mp3') }}" loop preload="auto"></audio>
+    <button id="play-pause-button" class="audio-control-btn" title="Kontrol Musik Latar">
+        <i id="music-icon" class="fas fa-play"></i> 
+    </button>
+
+    <div class="bottom-nav">
+        <a href="#hero"><i class="fa-solid fa-house"></i></a>
+        <a href="#couples"><i class="fa-solid fa-user-group"></i></a>
+        <a href="#details"><i class="fa-solid fa-calendar-check"></i></a>
+        <a href="#gift"><i class="fa-solid fa-gift"></i></a>
+        <a href="#rsvp"><i class="fa-solid fa-clipboard-check"></i></a>
+        <a href="#qr"><i class="fa-solid fa-qrcode"></i></a>
+        <a href="#wishes"><i class="fa-solid fa-comment-dots"></i></a>
+    </div>
+
+    <div class="notification-overlay" id="notificationOverlay"></div>
+    <div class="wedding-notification" id="weddingNotification">
+        <div class="ribbon-banner">✨ Special Announcement ✨</div>
+        <h2 style="font-size: 2.3rem; margin-bottom: 0.5rem;">The Wedding Has Begun! 🎉</h2>
+        <p>Rexand & Rebeeca's special moment is starting now!</p>
+        <button class="btn" style="margin-top: 1rem;" onclick="closeNotification()">Celebrate With Us!</button>
+    </div>
+
+    <script>
+    const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+    const csrfToken = csrfMeta ? csrfMeta.getAttribute('content') : '';
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Nomor rekening berhasil disalin: ' + text);
+        }).catch(err => {
+            console.error('Gagal menyalin: ', err);
+        });
     }
-    function updateCountdown() {
+
+    function openInvitation() {
+        const cover = document.getElementById('welcome-cover');
+        if(cover) cover.classList.add('cover-hidden');
+
+        const audio = document.getElementById('background-music'); 
+        const icon = document.getElementById('music-icon');
+        if (audio) {
+            audio.play().then(() => {
+                if(icon) {
+                    icon.classList.remove("fa-play");
+                    icon.classList.add("fa-pause");
+                }
+            }).catch(e => console.log(e));
+        }
+        document.body.style.overflow = 'auto';
+    }
+
+    function closeNotification() {
+        document.getElementById('notificationOverlay').classList.remove('show');
+        document.getElementById('weddingNotification').classList.remove('show');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // 1. Fade In Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeInOnScroll = function() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < window.innerHeight - 150) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        fadeInOnScroll();
+        window.addEventListener('scroll', fadeInOnScroll);
+
+        // 2. Audio Control
+        const audio = document.getElementById('background-music');
+        const playPauseButton = document.getElementById('play-pause-button');
+        const icon = document.getElementById('music-icon');
+
+        if (audio && playPauseButton) {
+            audio.volume = 0.4;
+            playPauseButton.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        icon.classList.remove("fa-play");
+                        icon.classList.add("fa-pause");
+                    });
+                } else {
+                    audio.pause();
+                    icon.classList.remove("fa-pause");
+                    icon.classList.add("fa-play");
+                }
+            });
+        }
+
+        // 3. Countdown Timer (Tahun diselaraskan ke 2027)
         const targetDate = new Date("2027-12-08T07:30:00").getTime();
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-        
-        if (distance > 0) {
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
             
-            if (document.getElementById('days')) document.getElementById('days').textContent = days;
-            if (document.getElementById('hours')) document.getElementById('hours').textContent = hours;
-            if (document.getElementById('minutes')) document.getElementById('minutes').textContent = minutes;
-            if (document.getElementById('seconds')) document.getElementById('seconds').textContent = seconds;
-        } else {
-            const cdBox = document.getElementById('countdown');
-            if(cdBox) cdBox.innerHTML = '<p style="font-weight: 600;">The Wedding Day is Here! 🎉</p>';
-        }
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    // 4. Submit RSVP Form
-    const rsvpForm = document.getElementById('weddingRsvp');
-    if (rsvpForm) {
-        rsvpForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const guestId = document.getElementById('guestId').value;
-            const email = document.getElementById('guestEmail').value;
-            const attendance = document.querySelector('input[name="attendance"]:checked');
-            const totalGuests = document.getElementById('totalGuests').value;
-            const alertBox = document.getElementById('rsvpAlert');
-            
-            if (!attendance) {
-                alert('Please select attendance option');
-                return;
-            }
-
-            try {
-                const response = await fetch('/rsvp', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken
-                    },
-                    body: JSON.stringify({
-                        guest_id: guestId,
-                        email: email,
-                        attendance: attendance.value,
-                        total_guests: totalGuests
-                    })
-                });
-                const data = await response.json();
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
                 
-                if (data.success) {
-                    alertBox.className = 'alert alert-success';
-                    alertBox.textContent = 'RSVP submitted successfully!';
-                    alertBox.style.display = 'block';
-                } else {
-                    alertBox.className = 'alert alert-error';
-                    alertBox.textContent = 'Failed to submit RSVP.';
-                    alertBox.style.display = 'block';
-                }
-                setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
-            } catch (error) {
-                console.error('Error:', error);
-                alertBox.className = 'alert alert-error';
-                alertBox.textContent = 'An error occurred.';
-                alertBox.style.display = 'block';
-                setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
-            }
-        });
-    }
-
-    // 5. Submit Wish Form
-    const wishForm = document.getElementById('wishForm');
-    if (wishForm) {
-        wishForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const name = document.getElementById('wishName').value;
-            const message = document.getElementById('wishMessage').value;
-            const alertBox = document.getElementById('wishAlert');
-
-            try {
-                const response = await fetch('/wishes', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken
-                    },
-                    body: JSON.stringify({ name: name, message: message })
-                });
-                const data = await response.json();
-
-                if (data.success) {
-                    const wishesList = document.getElementById('wishesList');
-                    const newWish = document.createElement('div');
-                    newWish.className = 'wish-item';
-                    newWish.innerHTML = `
-                        <div class="wish-author">${name}</div>
-                        <div class="wish-message">${message}</div>
-                    `;
-                    wishesList.prepend(newWish);
-                    
-                    document.getElementById('wishMessage').value = '';
-                    
-                    alertBox.className = 'alert alert-success';
-                    alertBox.textContent = data.message || 'Wish sent successfully!';
-                    alertBox.style.display = 'block';
-                } else {
-                    alertBox.className = 'alert alert-error';
-                    alertBox.textContent = 'Failed to submit wish.';
-                    alertBox.style.display = 'block';
-                }
-                setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred.');
-            }
-        });
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-        const audio = document.getElementById("background-music");
-        const playBtn = document.getElementById("play-pause-button");
-        const icon = document.getElementById("music-icon");
-
-        playBtn.addEventListener("click", function () {
-            if (audio.paused) {
-                audio.play();
-                icon.classList.remove("fa-play");
-                icon.classList.add("fa-pause");
+                if (document.getElementById('days')) document.getElementById('days').textContent = days;
+                if (document.getElementById('hours')) document.getElementById('hours').textContent = hours;
+                if (document.getElementById('minutes')) document.getElementById('minutes').textContent = minutes;
+                if (document.getElementById('seconds')) document.getElementById('seconds').textContent = seconds;
             } else {
-                audio.pause();
-                icon.classList.remove("fa-pause");
-                icon.classList.add("fa-play");
+                const cdBox = document.getElementById('countdown-box');
+                if(cdBox) cdBox.innerHTML = '<p style="font-weight: 600;">The Wedding Day is Here! 🎉</p>';
             }
-        });
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // 4. Submit RSVP Form
+        const rsvpForm = document.getElementById('weddingRsvp');
+        if (rsvpForm) {
+            rsvpForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const guestId = document.getElementById('guestId').value;
+                const email = document.getElementById('guestEmail').value;
+                const attendance = document.querySelector('input[name="attendance"]:checked');
+                const totalGuests = document.getElementById('totalGuests').value;
+                const alertBox = document.getElementById('rsvpAlert');
+                
+                if (!attendance) {
+                    alert('Please select attendance option');
+                    return;
+                }
+
+                try {
+                    const response = await fetch('/rsvp', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        body: JSON.stringify({
+                            guest_id: guestId,
+                            email: email,
+                            attendance: attendance.value,
+                            total_guests: totalGuests
+                        })
+                    });
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        alertBox.className = 'alert alert-success';
+                        alertBox.textContent = 'RSVP submitted successfully!';
+                        alertBox.style.display = 'block';
+                    } else {
+                        alertBox.className = 'alert alert-error';
+                        alertBox.textContent = 'Failed to submit RSVP.';
+                        alertBox.style.display = 'block';
+                    }
+                    setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
+                } catch (error) {
+                    console.error('Error:', error);
+                    alertBox.className = 'alert alert-error';
+                    alertBox.textContent = 'An error occurred.';
+                    alertBox.style.display = 'block';
+                    setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
+                }
+            });
+        }
+
+        // 5. Submit Wish Form
+        const wishForm = document.getElementById('wishForm');
+        if (wishForm) {
+            wishForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const name = document.getElementById('wishName').value;
+                const message = document.getElementById('wishMessage').value;
+                const alertBox = document.getElementById('wishAlert');
+
+                try {
+                    const response = await fetch('/wishes', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        body: JSON.stringify({ name: name, message: message })
+                    });
+                    const data = await response.json();
+
+                    if (data.success) {
+                        const wishesList = document.getElementById('wishesList');
+                        const newWish = document.createElement('div');
+                        newWish.className = 'wish-item';
+                        newWish.innerHTML = `
+                            <div class="wish-author">${name}</div>
+                            <div class="wish-message">${message}</div>
+                        `;
+                        wishesList.prepend(newWish);
+                        
+                        document.getElementById('wishMessage').value = '';
+                        
+                        alertBox.className = 'alert alert-success';
+                        alertBox.textContent = data.message || 'Wish sent successfully!';
+                        alertBox.style.display = 'block';
+                    } else {
+                        alertBox.className = 'alert alert-error';
+                        alertBox.textContent = 'Failed to submit wish.';
+                        alertBox.style.display = 'block';
+                    }
+                    setTimeout(() => { alertBox.style.display = 'none'; }, 5000);
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred.');
+                }
+            });
+        }
     });
-</script>
+    </script>
 </body>
 </html>
