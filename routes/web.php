@@ -141,3 +141,5 @@ Route::get('/checkin/{code}', [CheckinController::class, 'scan'])->name('checkin
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('guests', GuestController::class);
+
+// clear vercel cache
