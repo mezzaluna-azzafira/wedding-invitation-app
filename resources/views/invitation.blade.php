@@ -1530,6 +1530,26 @@ document.addEventListener('DOMContentLoaded', function() {
             if(cdBox) cdBox.innerHTML = '<p style="font-weight: 600;">The Wedding Day is Here! 🎉</p>';
         }
     }
+    function updateCountdown() {
+        const targetDate = new Date("2027-12-08T07:30:00").getTime();
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+        
+        if (distance > 0) {
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            if (document.getElementById('days')) document.getElementById('days').textContent = days;
+            if (document.getElementById('hours')) document.getElementById('hours').textContent = hours;
+            if (document.getElementById('minutes')) document.getElementById('minutes').textContent = minutes;
+            if (document.getElementById('seconds')) document.getElementById('seconds').textContent = seconds;
+        } else {
+            const cdBox = document.getElementById('countdown');
+            if(cdBox) cdBox.innerHTML = '<p style="font-weight: 600;">The Wedding Day is Here! 🎉</p>';
+        }
+    }
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
